@@ -7,6 +7,7 @@ import {me} from './store'
 import {AllMovies} from './components/allMovies'
 import {Home} from './components/Home'
 import {Playground} from './components/MaterializePlayground'
+import {SingleMovie} from './components/SingleMovie'
 
 /**
  * COMPONENT
@@ -26,6 +27,7 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/allMovies" component={AllMovies} />
+        <Route path="/SingleMovie/:id" component={SingleMovie} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

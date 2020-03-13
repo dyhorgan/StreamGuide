@@ -1,4 +1,23 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
+// import * as noUiSlider from 'nouislider';
+// import * as wNumb from 'wnumb'
+
+// var slider = document.getElementById('test-slider');
+// noUiSlider.create(slider, {
+//  start: [20, 80],
+//  connect: true,
+//  step: 1,
+//  orientation: 'horizontal', // 'horizontal' or 'vertical'
+//  range: {
+//    'min': 0,
+//    'max': 100
+//  },
+//  format: wNumb({
+//    decimals: 0
+//  })
+// });
+
 const dummyData = [
   {
     title: 'Good Will Hunting',
@@ -127,65 +146,140 @@ export class AllMovies extends Component {
         <h1 className="flow-text">All Movies Component</h1>
 
         <div className="row left-align">
-          <button className="btn waves-effect red darken-3 white-text col s2">
+          {/* <button className="btn waves-effect red darken-3 white-text col s2">
             <i className="material-icons right">arrow_drop_down</i>All
-          </button>
-          <button className="btn waves-effect red darken-3 white-text col s2">
-            <i className="material-icons right">arrow_drop_down</i>Movies
-          </button>
+          </button> */}
+          <a
+            className="dropdown-trigger btn red darken-3 col s2"
+            href=""
+            data-target="dropdown4"
+          >
+            <i className="material-icons right">arrow_drop_down</i>
+            All
+          </a>
+          <ul id="dropdown4" className="dropdown-content">
+            <li>
+              <a href="#!">Action/Adventure</a>
+            </li>
+            <li>
+              <a href="#!">Horror</a>
+            </li>
+            <li>
+              <a href="#!">Comedy</a>
+            </li>
+          </ul>
+          <a
+            className="dropdown-trigger btn red darken-3 col s2"
+            href=""
+            data-target="dropdown2"
+          >
+            <i className="material-icons right">arrow_drop_down</i>
+            Movies
+          </a>
+          <ul id="dropdown2" className="dropdown-content">
+            <li>
+              <a href="#!">Movies and TV Shows</a>
+            </li>
+            <li>
+              <a href="#!">Movies</a>
+            </li>
+            <li>
+              <a href="#!">TV Shows</a>
+            </li>
+          </ul>
           <div className="valign-wrapper left-align col s1">
             <h5>On</h5>
           </div>
-          {/* <select className="waves-effect red darken-3 white-text"><i className="material-icons right">arrow_drop_down</i>
-            <option>Hulu</option>
-            <option>Netflix</option>
-            <option>Amazon Prime</option>
-            </select> */}
-          <button className="btn waves-effect red darken-3 white-text col s2">
-            <i className="material-icons right">arrow_drop_down</i>Hulu
-          </button>
+
+          <a
+            className="dropdown-trigger btn red darken-3 col s2"
+            href=""
+            data-target="dropdown3"
+          >
+            <i className="material-icons right">arrow_drop_down</i>
+            Hulu
+          </a>
+          <ul id="dropdown3" className="dropdown-content">
+            <li>
+              <a href="#!">Netflix</a>
+            </li>
+            <li>
+              <a href="#!">Hulu</a>
+            </li>
+            <li>
+              <a href="#!">Amazon Prime</a>
+            </li>
+          </ul>
         </div>
-        <a
-          className="dropdown-trigger btn right"
-          href=""
-          data-target="dropdown1"
-        >
-          <i className="material-icons right">arrow_drop_down</i>
-          Sort by Default
-        </a>
-        <ul id="dropdown1" className="dropdown-content">
-          <li>
-            <a href="#!">Popularity</a>
-          </li>
-          <li>
-            <a href="#!">Alphabetical</a>
-          </li>
-          <li>
-            <a href="#!">IMDB Score</a>
-          </li>
-          <li>
-            <a href="#!">Rotten Tomatoes Score</a>
-          </li>
-        </ul>
-        <div className="right-align">
+        <div className="row right-align">
+          <a
+            className="dropdown-trigger btn right"
+            href=""
+            data-target="dropdown1"
+          >
+            <i className="material-icons right">arrow_drop_down</i>
+            Sort by Default
+          </a>
+          <ul id="dropdown1" className="dropdown-content">
+            <li>
+              <a href="#!">Popularity</a>
+            </li>
+            <li>
+              <a href="#!">Alphabetical</a>
+            </li>
+            <li>
+              <a href="#!">IMDB Score</a>
+            </li>
+            <li>
+              <a href="#!">Rotten Tomatoes Score</a>
+            </li>
+          </ul>
+
+          <a
+            className="dropdown-trigger btn right red darken-3 col s2"
+            href=""
+            data-target="dropdown5"
+          >
+            <i className="material-icons right">arrow_drop_down</i>
+            Filter
+          </a>
+          <ul id="dropdown5" className="dropdown-content">
+            <li>
+              <a href="#!">Release Year</a>
+              {/* <div id="test-slider"></div> */}
+            </li>
+            <li>
+              <a href="#!">IMDB Score</a>
+              {/* <div id="test-slider"></div> */}
+            </li>
+            <li>
+              <a href="#!">Rotten Tomatoes Score</a>
+              {/* <div id="test-slider"></div> */}
+            </li>
+          </ul>
+        </div>
+
+        {/* <div className="right-align">
           <a className="dropdown-trigger btn waves-effect orange darken-3 white-text col s2 right-align">
             <i className="material-icons right">arrow_drop_down</i>
             Filter
           </a>
-        </div>
+        </div> */}
 
         <div className="row">
           {dummyData.map(function(movie) {
             return (
               <div key={movie.id} className="col s12 m6 l3">
                 <div className="card large">
-                  <div className="card-image">
-                    <img
-                      src={movie.imgUrl}
-                      className="responsive-img"
-                      alt="something"
-                    />
-                  </div>
+                  <Link to={`/SingleMovie/${movie.id}`}>
+                    <div className="card-image">
+                      <img
+                        src={movie.imgUrl}
+                        className="responsive-img"
+                        alt="something"
+                      />
+                    </div>
+                  </Link>
                   <div className="card-panel hoverable">
                     <p>{movie.title}</p>
                     <p>IMDB Score: {movie.imdbScore}</p>
