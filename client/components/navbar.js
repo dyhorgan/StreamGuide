@@ -5,26 +5,55 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>BOILERMAKER</h1>
+  <div className="navbar-fixed">
     <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
+      <div className="nav-wrapper">
+        <a href="#" className="brand-logo center">
+          StreamGuide
+        </a>
+
+        {isLoggedIn ? (
+          <div>
+            {/* The navbar will show these links after you log in */}
+            <Link to="/home">User Home</Link>
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>
+          </div>
+        ) : (
+          <div>
+            {/* <nav> */}
+            <div className="nav-wrapper">
+              <form className="right">
+                <div className="input-field">
+                  <input id="search" type="search" required />
+                  <label className="label-icon" htmlFor="search">
+                    <i className="material-icons">search</i>
+                  </label>
+                  <i className="material-icons">close</i>
+                </div>
+              </form>
+            </div>
+            {/* </nav> */}
+
+            <ul id="nav-mobile" className="center hide-on-med-and-down">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/signup">Sign Up</Link>
+              </li>
+              <li>
+                <Link to="/allMovies">Movies</Link>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
     </nav>
-    <hr />
   </div>
 )
 
