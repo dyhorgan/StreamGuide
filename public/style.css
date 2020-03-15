@@ -19,6 +19,24 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+.singleStyle {
+  max-width: 22%;
+  max-height: 22%;
+}
+
+.logoStyle {
+  max-width: 2.5%;
+  max-height: 2.5%;
+}
+
+#styleSpacing {
+  width: 1%;
+}
 
 /* #movieContainer {
   display: flex;
@@ -36,10 +54,6 @@ form div {
 /* .buttonsRow {
   display: flex;
   flex-direction: row;
-} */
-
-/* #styleSpacing {
-  width: 1%;
 } */
 
 /* #verticalAlign {
