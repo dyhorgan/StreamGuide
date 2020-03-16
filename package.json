@@ -50,6 +50,7 @@
     "materialize-css": "^1.0.0-rc.2",
     "morgan": "^1.9.1",
     "nouislider": "^14.1.1",
+    "nouislider-react": "^3.3.7",
     "passport": "^0.4.0",
     "passport-google-oauth": "^2.0.0",
     "pg": "^7.9.0",
@@ -64,6 +65,7 @@
     "redux-thunk": "^2.3.0",
     "sequelize": "^5.21.5",
     "socket.io": "^2.2.0",
+    "unirest": "^0.6.0",
     "wnumb": "^1.2.0"
   },
   "devDependencies": {
@@ -85,6 +87,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "chai": "^4.2.0",
+    "css-loader": "^3.4.2",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "eslint": "^5.16.0",

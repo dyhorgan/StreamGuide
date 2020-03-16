@@ -24,13 +24,49 @@
       $('.fixed-action-btn').floatingActionButton();
     }); 
     </script>
-
-
-    <!-- <script type="text/javascript">
+    <script>
     $(document).ready(function(){
-      $('.sample').matchHeight();
-   })</script> -->
-  <!-- <script type="text/javascript" src="js/materialize.min.js"></script>  -->
+      $('.materialboxed').materialbox();
+    });
+    </script>
+  <script>
+    $(document).ready(function(){
+$('.chips').chips();
+  $('.chips-initial').chips({
+    data: [{
+      tag: 'Apple',
+    }, {
+      tag: 'Microsoft',
+    }, {
+      tag: 'Google',
+    }],
+  });
+});
+</script>
+  <script>
+    $(document).ready(function(){
+  $('.chips-placeholder').chips({
+    placeholder: 'Enter a tag',
+    secondaryPlaceholder: '+Tag',
+  });
+});
+  </script>
+  <script>
+      $(document).ready(function(){
+  $('.chips-autocomplete').chips({
+    autocompleteOptions: {
+      data: {
+        'Apple': null,
+        'Microsoft': null,
+        'Google': null
+      },
+      limit: Infinity,
+      minLength: 1
+    }
+  });
+});
+  </script>
+    
   </body>
 </html>
 

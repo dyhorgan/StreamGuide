@@ -186,7 +186,11 @@ export class SingleMovie extends Component {
         <h2>{found.title}</h2>
         <h5>{found.year}</h5>
 
-        <img src={found.imgUrl} className="singleStyle" alt="something" />
+        <img
+          src={found.imgUrl}
+          className="singleStyle materialboxed"
+          alt="something"
+        />
         <div className="center-align">
           <p className="flexRow valign-wrapper center-align">
             <img

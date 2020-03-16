@@ -1,4 +1,6 @@
 import React from 'react'
+// import Nouislider from "nouislider-react";
+// import "nouislider/distribute/nouislider.css";
 export const Playground = function() {
   return (
     <div className="container">
