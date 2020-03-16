@@ -249,6 +249,19 @@ export let dummyDataOriginal = [
     contentTag: ['All', 'TV'],
     pop: 1317725,
     id: 19
+  },
+  {
+    title: 'Terriers',
+    imgUrl:
+      'https://m.media-amazon.com/images/M/MV5BNzg0NDQ0MTcwM15BMl5BanBnXkFtZTcwNTQwNDk3Mw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg',
+    imdbScore: 8.4,
+    rottenTomatoes: 92,
+    year: 2010,
+    genreTag: ['All', 'Comedy', 'Drama'],
+    whereWatch: ['All', 'Hulu'],
+    contentTag: ['All', 'TV'],
+    pop: 9907,
+    id: 20
   }
 ]
 export class AllMovies extends Component {
