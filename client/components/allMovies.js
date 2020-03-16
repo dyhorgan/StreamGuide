@@ -281,14 +281,14 @@ export class AllMovies extends Component {
   }
 
   serviceFilter(tag) {
-    let filteredData = dummyDataOriginal.filter(function(movie) {
+    let filteredData = this.state.dummyData.filter(function(movie) {
       return movie.whereWatch.includes(tag)
     })
 
     this.setState({dummyData: filteredData, service: tag})
   }
   contentFilter(tag) {
-    let filteredData = dummyDataOriginal.filter(function(movie) {
+    let filteredData = this.state.dummyData.filter(function(movie) {
       return movie.contentTag.includes(tag)
     })
     if (tag === 'All') {
