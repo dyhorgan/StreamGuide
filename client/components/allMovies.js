@@ -1,269 +1,9 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import Nouislider from 'nouislider-react'
-// import css from "./nouislider.css";
+import {dummyDataOriginal} from '../DummyDataOriginal'
 
-export let dummyDataOriginal = [
-  {
-    title: 'Good Will Hunting',
-    imgUrl:
-      'https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Good_Will_Hunting.png/220px-Good_Will_Hunting.png',
-    imdbScore: 8.3,
-    rottenTomatoes: 97,
-    year: 1997,
-    genreTag: ['All', 'Drama'],
-    whereWatch: ['All', 'Hulu'],
-    pop: 807512,
-    contentTag: ['All', 'Movie'],
-    id: 1
-  },
-  {
-    title: 'Grave of Fireflies',
-    imgUrl:
-      'https://m.media-amazon.com/images/M/MV5BZmY2NjUzNDQtNTgxNC00M2Q4LTljOWQtMjNjNDBjNWUxNmJlXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg',
-    imdbScore: 8.5,
-    rottenTomatoes: 98,
-    year: 1993,
-    genreTag: ['All', 'Foreign', 'Animated', 'Drama'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 212776,
-    id: 2
-  },
-  {
-    title: 'A Quiet Place',
-    imgUrl:
-      'https://m.media-amazon.com/images/M/MV5BMjI0MDMzNTQ0M15BMl5BanBnXkFtZTgwMTM5NzM3NDM@._V1_.jpg',
-    imdbScore: 7.5,
-    rottenTomatoes: 95,
-    year: 2018,
-    genreTag: ['All', 'Horror', 'Sci-Fi'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 360354,
-    id: 3
-  },
-  {
-    title: 'Warrior',
-    imgUrl:
-      'https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/Warrior_Poster.jpg/220px-Warrior_Poster.jpg',
-    imdbScore: 8.2,
-    rottenTomatoes: 83,
-    year: 2011,
-    genreTag: ['Action/Adventure', 'All', 'Drama'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 416851,
-    id: 4
-  },
-  {
-    title: 'The Fugitive',
-    imgUrl:
-      'https://image.tmdb.org/t/p/original/3gzLGFBoJM1xlNk0Ulzp0cJ6uPp.jpg',
-    imdbScore: 7.8,
-    rottenTomatoes: 96,
-    year: 1993,
-    genreTag: ['Action/Adventure', 'All'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 254515,
-    id: 5
-  },
-  {
-    title: '28 Days Later',
-    imgUrl:
-      'https://m.media-amazon.com/images/M/MV5BZGQxOTFjNWQtMjQ0Yi00OWU1LWFlZmEtNGFhMmRlYjg3N2IzL2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg',
-    imdbScore: 7.6,
-    rottenTomatoes: 86,
-    year: 2003,
-    genreTag: ['All', 'Horror', 'Foreign'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 357690,
-    id: 6
-  },
-  {
-    title: 'Akira',
-    imgUrl:
-      'https://m.media-amazon.com/images/M/MV5BM2ZiZTk1ODgtMTZkNS00NTYxLWIxZTUtNWExZGYwZTRjODViXkEyXkFqcGdeQXVyMTE2MzA3MDM@._V1_UY1200_CR90,0,630,1200_AL_.jpg',
-    imdbScore: 8.0,
-    rottenTomatoes: 90,
-    year: 1988,
-    genreTag: ['Action/Adventure', 'All', 'Sci-Fi', 'Foreign', 'Animated'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 151885,
-    id: 7
-  },
-  {
-    title: 'Big Fish',
-    imgUrl:
-      'https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Big_Fish_movie_poster.png/220px-Big_Fish_movie_poster.png',
-    imdbScore: 8.0,
-    rottenTomatoes: 75,
-    year: 2003,
-    genreTag: ['All', 'Fantasy'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 399939,
-    id: 8
-  },
-  {
-    title: 'Hunt for the Wilderpeople',
-    imgUrl:
-      'https://upload.wikimedia.org/wikipedia/en/thumb/4/44/Hunt_for_the_Wilderpeople.png/220px-Hunt_for_the_Wilderpeople.png',
-    imdbScore: 7.9,
-    rottenTomatoes: 96,
-    year: 2016,
-    genreTag: ['All', 'Comedy', 'Foreign', 'Drama'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 96852,
-    id: 9
-  },
-  {
-    title: 'Free Solo',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/en/9/9c/Free_Solo.png',
-    imdbScore: 8.2,
-    rottenTomatoes: 97,
-    year: 2018,
-    genreTag: ['All', 'Documentary'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 44775,
-    id: 10
-  },
-  {
-    title: 'When Harry Met Sally',
-    imgUrl:
-      'https://upload.wikimedia.org/wikipedia/en/thumb/1/1c/WhenHarryMetSallyPoster.jpg/220px-WhenHarryMetSallyPoster.jpg',
-    imdbScore: 7.6,
-    rottenTomatoes: 90,
-    year: 1989,
-    genreTag: ['All', 'Comedy'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 184812,
-    id: 11
-  },
-  {
-    title: 'I, Tonya',
-    imgUrl:
-      'https://m.media-amazon.com/images/M/MV5BMjI5MDY1NjYzMl5BMl5BanBnXkFtZTgwNjIzNDAxNDM@._V1_.jpg',
-    imdbScore: 7.5,
-    rottenTomatoes: 89,
-    year: 2017,
-    genreTag: ['All', 'Comedy', 'Drama'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 161340,
-    id: 12
-  },
-  {
-    title: 'Captain Fantastic',
-    imgUrl:
-      'https://m.media-amazon.com/images/M/MV5BMjE5OTM0OTY5NF5BMl5BanBnXkFtZTgwMDcxOTQ3ODE@._V1_.jpg',
-    imdbScore: 7.9,
-    rottenTomatoes: 82,
-    year: 2016,
-    genreTag: ['All', 'Drama'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 171785,
-    id: 13
-  },
-  {
-    title: 'Cabin in the Woods',
-    imgUrl:
-      'https://m.media-amazon.com/images/M/MV5BNTUxNzYyMjg2N15BMl5BanBnXkFtZTcwMTExNzExNw@@._V1_.jpg',
-    imdbScore: 7.0,
-    rottenTomatoes: 91,
-    year: 2011,
-    genreTag: ['All', 'Horror', 'Sci-Fi'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 354545,
-    id: 14
-  },
-  {
-    title: 'Up in the Air',
-    imgUrl:
-      'https://m.media-amazon.com/images/M/MV5BMTI3MzYxMTA4NF5BMl5BanBnXkFtZTcwMDE4ODg3Mg@@._V1_.jpg',
-    imdbScore: 7.4,
-    rottenTomatoes: 91,
-    year: 2009,
-    genreTag: ['All', 'Drama'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 308449,
-    id: 15
-  },
-  {
-    title: 'Booksmart',
-    imgUrl:
-      'https://m.media-amazon.com/images/M/MV5BMjEzMjcxNjA2Nl5BMl5BanBnXkFtZTgwMjAxMDM2NzM@._V1_.jpg',
-    imdbScore: 7.2,
-    rottenTomatoes: 97,
-    year: 2019,
-    genreTag: ['All', 'Comedy'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'Movie'],
-    pop: 68378,
-    id: 16
-  },
-  {
-    title: 'The Dark Knight',
-    imgUrl:
-      'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg',
-    imdbScore: 9.0,
-    rottenTomatoes: 94,
-    year: 2008,
-    genreTag: ['All', 'Action/Adventure'],
-    whereWatch: ['All', 'Netflix'],
-    contentTag: ['All', 'Movie'],
-    pop: 2181203,
-    id: 17
-  },
-  {
-    title: 'The Avengers',
-    imgUrl:
-      'https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg',
-    imdbScore: 8.0,
-    rottenTomatoes: 92,
-    year: 2012,
-    genreTag: ['All', 'Action/Adventure', 'Sci-Fi'],
-    whereWatch: ['All', 'Amazon'],
-    pop: 1220552,
-    contentTag: ['All', 'Movie'],
-    id: 18
-  },
-  {
-    title: 'Breaking Bad',
-    imgUrl:
-      'https://m.media-amazon.com/images/M/MV5BMjhiMzgxZTctNDc1Ni00OTIxLTlhMTYtZTA3ZWFkODRkNmE2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg',
-    imdbScore: 9.5,
-    rottenTomatoes: 96,
-    year: 2008,
-    genreTag: ['All', 'Drama'],
-    whereWatch: ['All', 'Netflix'],
-    contentTag: ['All', 'TV'],
-    pop: 1317725,
-    id: 19
-  },
-  {
-    title: 'Terriers',
-    imgUrl:
-      'https://m.media-amazon.com/images/M/MV5BNzg0NDQ0MTcwM15BMl5BanBnXkFtZTcwNTQwNDk3Mw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg',
-    imdbScore: 8.4,
-    rottenTomatoes: 92,
-    year: 2010,
-    genreTag: ['All', 'Comedy', 'Drama'],
-    whereWatch: ['All', 'Hulu'],
-    contentTag: ['All', 'TV'],
-    pop: 9907,
-    id: 20
-  }
-]
+// import Nouislider from 'nouislider-react'
+// import css from "./nouislider.css";
 export class AllMovies extends Component {
   constructor() {
     super()
@@ -273,62 +13,72 @@ export class AllMovies extends Component {
     this.sortByPop = this.sortByPop.bind(this)
     this.sortByAlphabet = this.sortByAlphabet.bind(this)
     this.contentFilter = this.contentFilter.bind(this)
+    this.filterFunc = this.filterFunc.bind(this)
     this.state = {
       dummyData: dummyDataOriginal,
-      service: 'All',
-      content: 'Movies/TV',
-      genre: 'All'
+      serviceFilt: 'Inactive',
+      contentFilt: 'Inactive',
+      genreFilt: 'Inactive',
+      serviceTag: 'Every Service',
+      genreTag: 'All',
+      contentTag: 'Movies/TV'
     }
   }
 
-  genreFilter(tag) {
-    // let data = this.state.dummyData
-    let filteredData = dummyDataOriginal.filter(function(movie) {
-      return movie.genreTag.includes(tag)
-    })
-
-    if (tag === 'Action/Adventure') {
-      tag = 'Action'
-    }
-    this.setState({dummyData: filteredData, genre: tag})
+  async genreFilter(tag) {
+    await this.setState({genreTag: tag, genreFilt: 'Active'})
+    this.filterFunc()
   }
 
-  serviceFilter(tag) {
-    let filteredData = this.state.dummyData.filter(function(movie) {
-      return movie.whereWatch.includes(tag)
-    })
-
-    this.setState({dummyData: filteredData, service: tag})
+  async serviceFilter(tag) {
+    await this.setState({serviceTag: tag, serviceFilt: 'Active'})
+    this.filterFunc()
   }
-  contentFilter(tag) {
-    let filteredData = this.state.dummyData.filter(function(movie) {
-      return movie.contentTag.includes(tag)
+  async contentFilter(tag) {
+    await this.setState({contentTag: tag, contentFilt: 'Active'})
+    this.filterFunc()
+  }
+
+  filterFunc() {
+    let {serviceFilt, contentFilt, genreFilt} = this.state
+
+    // if(serviceFilt === 'Active'){
+    let serviceFiltered = dummyDataOriginal.filter(movie => {
+      return movie.whereWatch.includes(this.state.serviceTag)
     })
-    if (tag === 'All') {
-      tag = 'Movies/TV'
-    } else if (tag === 'Movie') {
-      tag = 'Movies'
-    } else if (tag === 'TV') {
-      tag = 'TV Shows'
-    }
-    this.setState({dummyData: filteredData, content: tag})
+    this.setState({dummyData: serviceFiltered})
+    // }
+
+    // if(contentFilt === 'Active'){
+    let contentFiltered = this.state.dummyData.filter(movie => {
+      return movie.contentTag.includes(this.state.contentTag)
+    })
+    this.setState({dummyData: contentFiltered})
+    // }
+
+    // if(genreFilt === 'Active'){
+    let genreFiltered = this.state.dummyData.filter(movie => {
+      return movie.genreTag.includes(this.state.genreTag)
+    })
+    this.setState({dummyData: genreFiltered})
+    // }
   }
 
   sortByIMDB() {
-    let sortedData = this.state.dummyData.sort(function(movie1, movie2) {
+    let sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
       return movie2.imdbScore - movie1.imdbScore
     })
     this.setState({dummyData: sortedData})
   }
   sortByRT() {
-    let sortedData = this.state.dummyData.sort(function(movie1, movie2) {
+    let sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
       return movie2.rottenTomatoes - movie1.rottenTomatoes
     })
     this.setState({dummyData: sortedData})
   }
 
   sortByPop() {
-    let sortedData = this.state.dummyData.sort(function(movie1, movie2) {
+    let sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
       return movie2.pop - movie1.pop
     })
     this.setState({dummyData: sortedData})
@@ -338,7 +88,7 @@ export class AllMovies extends Component {
     // let sortedData = this.state.dummyData.sort(function(movie1, movie2){
     //   return movie2.title - movie1.title
     // })
-    let sortedData = this.state.dummyData.sort(function(a, b) {
+    let sortedData = dummyDataOriginal.sort(function(a, b) {
       var nameA = a.title.toUpperCase()
       var nameB = b.title.toUpperCase()
       if (nameA < nameB) {
@@ -354,7 +104,7 @@ export class AllMovies extends Component {
 
   render() {
     let dummyData = this.state.dummyData
-
+    console.log(dummyData)
     return (
       <div className="container">
         <h1 className="flow-text">All Movies Component</h1>
@@ -370,13 +120,13 @@ export class AllMovies extends Component {
             data-target="dropdown4"
           >
             <i className="material-icons right">arrow_drop_down</i>
-            {this.state.genre}
+            {this.state.genreTag}
           </a>
           <ul id="dropdown4" className="dropdown-content">
             <li onClick={() => this.genreFilter('All')}>
               <a href="#!">All</a>
             </li>
-            <li onClick={() => this.genreFilter('Action/Adventure')}>
+            <li onClick={() => this.genreFilter('Action')}>
               <a href="#!">Action/Adventure</a>
             </li>
             <li onClick={() => this.genreFilter('Horror')}>
@@ -413,16 +163,16 @@ export class AllMovies extends Component {
             data-target="dropdown2"
           >
             <i className="material-icons right">arrow_drop_down</i>
-            {this.state.content}
+            {this.state.contentTag}
           </a>
           <ul id="dropdown2" className="dropdown-content">
-            <li onClick={() => this.contentFilter('All')}>
+            <li onClick={() => this.contentFilter('Movies/TV')}>
               <a href="#!">Movies and TV Shows</a>
             </li>
-            <li onClick={() => this.contentFilter('Movie')}>
+            <li onClick={() => this.contentFilter('Movies')}>
               <a href="#!">Movies</a>
             </li>
-            <li onClick={() => this.contentFilter('TV')}>
+            <li onClick={() => this.contentFilter('TV Shows')}>
               <a href="#!">TV Shows</a>
             </li>
           </ul>
@@ -431,12 +181,12 @@ export class AllMovies extends Component {
           </div>
 
           <a
-            className="dropdown-trigger btn red darken-3 col s2"
+            className="dropdown-trigger btn red darken-3 col s2 dropdownWidth"
             href=""
             data-target="dropdown3"
           >
             <i className="material-icons right">arrow_drop_down</i>
-            {this.state.service}
+            {this.state.serviceTag}
           </a>
           <ul id="dropdown3" className="dropdown-content">
             <li onClick={() => this.serviceFilter('Netflix')}>
@@ -448,7 +198,7 @@ export class AllMovies extends Component {
             <li onClick={() => this.serviceFilter('Amazon')}>
               <a href="#!">Amazon Prime</a>
             </li>
-            <li onClick={() => this.serviceFilter('All')}>
+            <li onClick={() => this.serviceFilter('Every Service')}>
               <a href="#!">Every Service</a>
             </li>
           </ul>

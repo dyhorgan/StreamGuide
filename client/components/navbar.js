@@ -4,6 +4,14 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
+const capitalizeFunc = function(string) {
+  let theString = ''
+  for (let i = 0; i < string.length; i++) {
+    theString += string[i]
+  }
+  return theString
+}
+
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div className="navbar-fixed">
     <nav>
@@ -28,7 +36,9 @@ const Navbar = ({handleClick, isLoggedIn}) => (
                 <div className="input-field">
                   <input id="search" type="search" required />
                   <label className="label-icon" htmlFor="search">
-                    <i className="material-icons">search</i>
+                    <Link to="/SingleMovie/4">
+                      <i className="material-icons">search</i>
+                    </Link>
                   </label>
                   <i className="material-icons">close</i>
                 </div>

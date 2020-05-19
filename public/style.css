@@ -38,6 +38,10 @@ form div {
   width: 1%;
 }
 
+.dropdownWidth {
+  min-width: 180px;
+}
+
 /* #movieContainer {
   display: flex;
   flex-direction: row;
