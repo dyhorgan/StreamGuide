@@ -20,6 +20,12 @@ export class SingleMovie extends Component {
 
   render() {
     const found = this.state.found
+    if (!found.whereWatch) {
+      found.whereWatch = []
+    }
+    let services = found.whereWatch.filter(function(element) {
+      return element !== 'Every Service'
+    })
     return (
       <div className="container center-align">
         <h2>{found.title}</h2>
@@ -49,14 +55,14 @@ export class SingleMovie extends Component {
           </p>
         </div>
         <h4>
-          Where to Watch {found.title}: {found.whereWatch}
-          {/* {found.whereWatch.map(function(element, index){
-              if(index !== found.whereWatch.length - 1){
-                return element + ', '
-              }else{
-                return element
-              }
-          })} */}
+          Where to Watch {found.title}:{' '}
+          {services.map(function(element, index) {
+            if (index !== services.length - 1) {
+              return element + ', '
+            } else if (element !== 'Every Service') {
+              return element
+            }
+          })}
         </h4>
       </div>
     )

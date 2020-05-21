@@ -35,7 +35,7 @@ export const dummyDataOriginal = [
     rottenTomatoes: 95,
     year: 2018,
     genreTag: ['All', 'Horror', 'Sci-Fi'],
-    whereWatch: ['Every Service', 'Hulu'],
+    whereWatch: ['Every Service', 'Hulu', 'Amazon'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 360354,
     languages: ['All Languages', 'English'],
