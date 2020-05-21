@@ -50,6 +50,13 @@ export class SingleMovie extends Component {
         </div>
         <h4>
           Where to Watch {found.title}: {found.whereWatch}
+          {/* {found.whereWatch.map(function(element, index){
+              if(index !== found.whereWatch.length - 1){
+                return element + ', '
+              }else{
+                return element
+              }
+          })} */}
         </h4>
       </div>
     )

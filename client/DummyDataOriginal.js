@@ -10,6 +10,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     pop: 807512,
     contentTag: ['Movies/TV', 'Movies'],
+    languages: ['All Languages', 'English'],
     id: 1
   },
   {
@@ -23,6 +24,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 212776,
+    languages: ['All Languages', 'Japanese'],
     id: 2
   },
   {
@@ -36,6 +38,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 360354,
+    languages: ['All Languages', 'English'],
     id: 3
   },
   {
@@ -49,12 +52,13 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 416851,
+    languages: ['All Languages', 'English'],
     id: 4
   },
   {
     title: 'The Fugitive',
     imgUrl:
-      'https://image.tmdb.org/t/p/original/3gzLGFBoJM1xlNk0Ulzp0cJ6uPp.jpg',
+      'https://img.reelgood.com/content/movie/86ad81c1-44d7-4f21-9670-d622e983010b/poster-780.webp',
     imdbScore: 7.8,
     rottenTomatoes: 96,
     year: 1993,
@@ -62,6 +66,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 254515,
+    languages: ['All Languages', 'English'],
     id: 5
   },
   {
@@ -75,6 +80,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 357690,
+    languages: ['All Languages', 'English'],
     id: 6
   },
   {
@@ -88,6 +94,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 151885,
+    languages: ['All Languages', 'Japanese'],
     id: 7
   },
   {
@@ -101,6 +108,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 399939,
+    languages: ['All Languages', 'English'],
     id: 8
   },
   {
@@ -114,6 +122,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 96852,
+    languages: ['All Languages', 'English'],
     id: 9
   },
   {
@@ -126,6 +135,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 44775,
+    languages: ['All Languages', 'English'],
     id: 10
   },
   {
@@ -139,6 +149,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 184812,
+    languages: ['All Languages', 'English'],
     id: 11
   },
   {
@@ -152,6 +163,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 161340,
+    languages: ['All Languages', 'English'],
     id: 12
   },
   {
@@ -165,6 +177,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 171785,
+    languages: ['All Languages', 'English'],
     id: 13
   },
   {
@@ -178,6 +191,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 354545,
+    languages: ['All Languages', 'English'],
     id: 14
   },
   {
@@ -191,6 +205,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 308449,
+    languages: ['All Languages', 'English'],
     id: 15
   },
   {
@@ -204,6 +219,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 68378,
+    languages: ['All Languages', 'English'],
     id: 16
   },
   {
@@ -217,6 +233,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Netflix'],
     contentTag: ['Movies/TV', 'Movies'],
     pop: 2181203,
+    languages: ['All Languages', 'English'],
     id: 17
   },
   {
@@ -230,6 +247,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Amazon'],
     pop: 1220552,
     contentTag: ['Movies/TV', 'Movies'],
+    languages: ['All Languages', 'English'],
     id: 18
   },
   {
@@ -243,6 +261,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Netflix'],
     contentTag: ['Movies/TV', 'TV Shows'],
     pop: 1317725,
+    languages: ['All Languages', 'English'],
     id: 19
   },
   {
@@ -256,6 +275,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'TV Shows'],
     pop: 9907,
+    languages: ['All Languages', 'English'],
     id: 20
   },
   {
@@ -269,6 +289,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'TV Shows'],
     pop: 337380,
+    languages: ['All Languages', 'English'],
     id: 21
   },
   {
@@ -282,6 +303,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Hulu'],
     contentTag: ['Movies/TV', 'TV Shows'],
     pop: 301389,
+    languages: ['All Languages', 'English'],
     id: 22
   },
   {
@@ -295,6 +317,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Netflix'],
     contentTag: ['Movies/TV', 'TV Shows'],
     pop: 738909,
+    languages: ['All Languages', 'English'],
     id: 23
   },
   {
@@ -308,6 +331,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Netflix'],
     contentTag: ['Movies/TV', 'TV Shows'],
     pop: 357691,
+    languages: ['All Languages', 'English'],
     id: 24
   },
   {
@@ -321,6 +345,7 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Amazon'],
     contentTag: ['Movies/TV', 'TV Shows'],
     pop: 397847,
+    languages: ['All Languages', 'English'],
     id: 25
   },
   {
@@ -334,6 +359,35 @@ export const dummyDataOriginal = [
     whereWatch: ['Every Service', 'Amazon'],
     contentTag: ['Movies/TV', 'TV Shows'],
     pop: 313773,
+    languages: ['All Languages', 'English'],
     id: 26
+  },
+  {
+    title: 'Downfall',
+    imgUrl:
+      'https://img.reelgood.com/content/movie/5b921a9b-707a-474b-b69e-19c1a986bf2c/poster-780.webp',
+    imdbScore: 8.2,
+    rottenTomatoes: 90,
+    year: 2004,
+    genreTag: ['All', 'Drama'],
+    whereWatch: ['Every Service', 'Amazon'],
+    contentTag: ['Movies/TV', 'Movies'],
+    pop: 320624,
+    languages: ['All Languages', 'German'],
+    id: 27
+  },
+  {
+    title: 'Even the Rain',
+    imgUrl:
+      'https://img.reelgood.com/content/movie/225fcfdc-bdf9-4e4b-a7a4-c39e652f292f/poster-780.webp',
+    imdbScore: 7.4,
+    rottenTomatoes: 87,
+    year: 2004,
+    genreTag: ['All', 'Drama'],
+    whereWatch: ['Every Service', 'Netflix'],
+    contentTag: ['Movies/TV', 'Movies'],
+    pop: 12355,
+    languages: ['All Languages', 'Spanish'],
+    id: 28
   }
 ]

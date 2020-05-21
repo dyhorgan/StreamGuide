@@ -14,6 +14,7 @@ export class AllMovies extends Component {
     this.sortByAlphabet = this.sortByAlphabet.bind(this)
     this.contentFilter = this.contentFilter.bind(this)
     this.filterFunc = this.filterFunc.bind(this)
+    this.languageSet = this.languageSet.bind(this)
     this.state = {
       dummyData: dummyDataOriginal,
       serviceFilt: 'Inactive',
@@ -21,7 +22,8 @@ export class AllMovies extends Component {
       genreFilt: 'Inactive',
       serviceTag: 'Every Service',
       genreTag: 'All',
-      contentTag: 'Movies/TV'
+      contentTag: 'Movies/TV',
+      languageTag: 'All Languages'
     }
   }
 
@@ -40,7 +42,7 @@ export class AllMovies extends Component {
   }
 
   filterFunc() {
-    let {serviceFilt, contentFilt, genreFilt} = this.state
+    // let {serviceFilt, contentFilt, genreFilt} = this.state
 
     // if(serviceFilt === 'Active'){
     let serviceFiltered = dummyDataOriginal.filter(movie => {
@@ -61,6 +63,12 @@ export class AllMovies extends Component {
       return movie.genreTag.includes(this.state.genreTag)
     })
     this.setState({dummyData: genreFiltered})
+
+    let languageFiltered = this.state.dummyData.filter(movie => {
+      console.log('language', movie)
+      return movie.languages.includes(this.state.languageTag)
+    })
+    this.setState({dummyData: languageFiltered})
     // }
   }
 
@@ -82,6 +90,10 @@ export class AllMovies extends Component {
       return movie2.pop - movie1.pop
     })
     this.setState({dummyData: sortedData})
+  }
+  async languageSet(tag) {
+    await this.setState({languageTag: tag})
+    this.filterFunc()
   }
 
   sortByAlphabet() {
@@ -107,8 +119,7 @@ export class AllMovies extends Component {
     console.log(dummyData)
     return (
       <div className="container">
-        <h1 className="flow-text">All Movies Component</h1>
-
+        <p />
         {/* <Nouislider range={{ min: 0, max: 100 }} start={[0, 100]}/> */}
         <div className="row left-align">
           {/* <button className="btn waves-effect red darken-3 white-text col s2">
@@ -205,6 +216,22 @@ export class AllMovies extends Component {
         </div>
         <div className="row left-align">
           <div className="chip">
+            {this.state.genreTag}
+            <i className="close material-icons">close</i>
+          </div>
+          <div className="chip">
+            {this.state.contentTag}
+            <i className="close material-icons">close</i>
+          </div>
+          <div className="chip">
+            {this.state.serviceTag}
+            <i className="close material-icons">close</i>
+          </div>
+          <div className="chip">
+            {this.state.languageTag}
+            <i className="close material-icons">close</i>
+          </div>
+          <div className="chip">
             Tag
             <i className="close material-icons">close</i>
           </div>
@@ -292,6 +319,46 @@ export class AllMovies extends Component {
                   <div className="right">2 Mil.</div>
                 </p>
               </form>
+            </li>
+          </ul>
+          <a
+            className="dropdown-trigger btn right red darken-3 col s2 flow-text dropdownWidth"
+            href=""
+            data-target="dropdown6"
+          >
+            <i className="material-icons right">arrow_drop_down</i>
+            {this.state.languageTag}
+          </a>
+          <ul id="dropdown6" className="dropdown-content">
+            <li onClick={() => this.languageSet('English')}>
+              <a>English</a>
+            </li>
+            <li onClick={() => this.languageSet('Spanish')}>
+              <a>Spanish</a>
+            </li>
+            <li onClick={() => this.languageSet('Italian')}>
+              <a>Italian</a>
+            </li>
+            <li onClick={() => this.languageSet('German')}>
+              <a>German</a>
+            </li>
+            <li onClick={() => this.languageSet('Japanese')}>
+              <a>Japanese</a>
+            </li>
+            <li onClick={() => this.languageSet('Korean')}>
+              <a>Korean</a>
+            </li>
+            <li onClick={() => this.languageSet('Arabic')}>
+              <a>Arabic</a>
+            </li>
+            <li onClick={() => this.languageSet('Russian')}>
+              <a>Russian</a>
+            </li>
+            <li onClick={() => this.languageSet('Thai')}>
+              <a>Thai</a>
+            </li>
+            <li onClick={() => this.languageSet('Hindi')}>
+              <a>Hindi</a>
             </li>
           </ul>
         </div>
