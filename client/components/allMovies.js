@@ -307,7 +307,9 @@ export class AllMovies extends Component {
               {/* <div id="test-slider"></div> */}
               <form action="#">
                 <p className="range-field">
-                  <div className="left">0</div>
+                  {/* <div className="left"> */}
+                  0
+                  {/* </div> */}
                   <input
                     type="range"
                     id="test5"
@@ -316,7 +318,9 @@ export class AllMovies extends Component {
 
                     // value="0"
                   />
-                  <div className="right">2 Mil.</div>
+                  {/* <div className="right"> */}
+                  2 Mil.
+                  {/* </div> */}
                 </p>
               </form>
             </li>

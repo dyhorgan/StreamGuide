@@ -42,7 +42,7 @@ export class SingleMovie extends Component {
               src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg"
               className="logoStyle"
             />
-            <p id="styleSpacing" />
+            <span id="styleSpacing" />
             {found.imdbScore}
           </p>
           <p className="flexRow valign-wrapper center-align">
@@ -50,8 +50,8 @@ export class SingleMovie extends Component {
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1009px-Rotten_Tomatoes.svg.png"
               className="logoStyle"
             />
-            <p id="styleSpacing" />
-            <p>{found.rottenTomatoes}%</p>
+            <span id="styleSpacing" />
+            <span>{found.rottenTomatoes}%</span>
           </p>
         </div>
         <h4>

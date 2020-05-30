@@ -42,6 +42,11 @@ form div {
   min-width: 180px;
 }
 
+.shiftRight {
+  /* display: flex;
+  text-align: right */
+  /* margin-left:auto; margin-right:0; */
+}
 /* #movieContainer {
   display: flex;
   flex-direction: row;
