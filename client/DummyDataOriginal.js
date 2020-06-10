@@ -389,5 +389,132 @@ export const dummyDataOriginal = [
     pop: 12355,
     languages: ['All Languages', 'Spanish'],
     id: 28
+  },
+  {
+    title: 'Cinema Paradiso',
+    imgUrl:
+      'https://img.reelgood.com/content/movie/c677ecbc-d4e9-44c4-a730-a11ad9cf20cd/poster-780.webp',
+    imdbScore: 8.5,
+    rottenTomatoes: 89,
+    year: 1988,
+    genreTag: ['All', 'Drama', 'Romance'],
+    whereWatch: ['Every Service', 'HBO'],
+    contentTag: ['Movies/TV', 'Movies'],
+    pop: 218809,
+    languages: ['All Languages', 'Italian'],
+    id: 29
+  },
+  {
+    title: 'Deep Red',
+    imgUrl:
+      'https://img.reelgood.com/content/movie/fadba26e-3f04-4067-8960-e08df3dbce70/poster-780.webp',
+    imdbScore: 7.6,
+    rottenTomatoes: 96,
+    year: 1975,
+    genreTag: ['All', 'Horror'],
+    whereWatch: ['Every Service', 'Amazon'],
+    contentTag: ['Movies/TV', 'Movies'],
+    pop: 30230,
+    languages: ['All Languages', 'English'],
+    id: 30
+  },
+
+  {
+    title: 'Happy as Lazzarro',
+    imgUrl:
+      'https://img.reelgood.com/content/movie/1ccbd862-7262-4b67-9fa0-91961850482f/poster-780.webp',
+    imdbScore: 7.6,
+    rottenTomatoes: 91,
+    pop: 13050,
+    year: 2018,
+    genreTag: ['All', 'Drama', 'Fantasy'],
+    contentTag: ['Movies/TV', 'Movies'],
+    whereWatch: ['Every Service', 'Netflix'],
+    languages: ['All Languages', 'Italian'],
+    id: 31
+  },
+  {
+    title: 'Parasite',
+    imgUrl:
+      'https://img.reelgood.com/content/movie/c03f0e9b-aca0-467b-8137-39e5b92d33fa/poster-780.webp',
+    imdbScore: 8.6,
+    rottenTomatoes: 99,
+    pop: 423981,
+    year: 2019,
+    genreTag: ['All', 'Drama', 'Thriller'],
+    contentTag: ['Movies/TV', 'Movies'],
+    whereWatch: ['Every Service', 'Hulu'],
+    languages: ['All Languages', 'Korean'],
+    id: 32
+  },
+  {
+    title: 'Paradise Now',
+    imgUrl:
+      'https://img.reelgood.com/content/movie/c0238b24-3c15-4521-b2a1-54aae0f24696/poster-780.webp',
+    imdbScore: 7.4,
+    rottenTomatoes: 89,
+    pop: 22027,
+    year: 2005,
+    genreTag: ['All', 'Crime', 'Drama', 'Thriller'],
+    contentTag: ['Movies/TV', 'Movies'],
+    whereWatch: ['Every Service', 'Amazon'],
+    languages: ['All Languages', 'Arabic'],
+    id: 33
+  },
+  {
+    title: 'Shutter',
+    imgUrl:
+      'https://img.reelgood.com/content/movie/451fd5b8-681c-4b0c-838f-13911312eb08/poster-780.webp',
+    imdbScore: 7.1,
+    rottenTomatoes: 59,
+    pop: 39540,
+    year: 2004,
+    genreTag: ['All', 'Horror'],
+    contentTag: ['Movies/TV', 'Movies'],
+    whereWatch: ['Every Service', 'Netflix'],
+    languages: ['All Languages', 'Thai'],
+    id: 34
+  },
+  {
+    title: 'Stalker',
+    imgUrl:
+      'https://img.reelgood.com/content/movie/1a58f220-8427-4fbb-bbcb-b99e22a33caf/poster-780.webp',
+    imdbScore: 8.2,
+    rottenTomatoes: 100,
+    pop: 109326,
+    year: 1979,
+    genreTag: ['All', 'Drama', 'Science-Fiction'],
+    contentTag: ['Movies/TV', 'Movies'],
+    whereWatch: ['Every Service', 'Amazon'],
+    languages: ['All Languages', 'Russian'],
+    id: 35
+  },
+  {
+    title: 'Haider',
+    imgUrl:
+      'https://img.reelgood.com/content/movie/7f088e5e-c6ac-426d-95da-a7619ccbb39c/poster-780.webp',
+    imdbScore: 8.1,
+    rottenTomatoes: 86,
+    pop: 48570,
+    year: 2014,
+    genreTag: ['All', 'Crime', 'Drama'],
+    contentTag: ['Movies/TV', 'Movies'],
+    whereWatch: ['Every Service', 'Netflix'],
+    languages: ['All Languages', 'Hindi'],
+    id: 36
+  },
+  {
+    title: 'Sunset Boulevard',
+    imgUrl:
+      'https://img.reelgood.com/content/movie/7d7265c1-df6c-47e4-b170-6110aedca6de/poster-780.webp',
+    imdbScore: 8.4,
+    rottenTomatoes: 98,
+    pop: 48570,
+    year: 1950,
+    genreTag: ['All', 'Crime', 'Drama', 'Film-Noir'],
+    contentTag: ['Movies/TV', 'Movies'],
+    whereWatch: ['Every Service', 'Amazon'],
+    languages: ['All Languages', 'English'],
+    id: 37
   }
 ]

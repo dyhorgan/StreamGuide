@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import Tags from './Tags'
+import {GenreDropDown} from './genreDropDown'
 import {dummyDataOriginal} from '../DummyDataOriginal'
+import {Languages} from './Languages'
 
 // import Nouislider from 'nouislider-react'
 // import css from "./nouislider.css";
@@ -65,7 +68,6 @@ export class AllMovies extends Component {
     this.setState({dummyData: genreFiltered})
 
     let languageFiltered = this.state.dummyData.filter(movie => {
-      console.log('language', movie)
       return movie.languages.includes(this.state.languageTag)
     })
     this.setState({dummyData: languageFiltered})
@@ -116,7 +118,7 @@ export class AllMovies extends Component {
 
   render() {
     let dummyData = this.state.dummyData
-    console.log(dummyData)
+    console.log('logging language in allMovies', this.state.languageTag)
     return (
       <div className="container">
         <p />
@@ -125,49 +127,10 @@ export class AllMovies extends Component {
           {/* <button className="btn waves-effect red darken-3 white-text col s2">
             <i className="material-icons right">arrow_drop_down</i>All
           </button> */}
-          <a
-            className="dropdown-trigger btn red darken-3 col s2"
-            href=""
-            data-target="dropdown4"
-          >
-            <i className="material-icons right">arrow_drop_down</i>
-            {this.state.genreTag}
-          </a>
-          <ul id="dropdown4" className="dropdown-content">
-            <li onClick={() => this.genreFilter('All')}>
-              <a href="#!">All</a>
-            </li>
-            <li onClick={() => this.genreFilter('Action')}>
-              <a href="#!">Action/Adventure</a>
-            </li>
-            <li onClick={() => this.genreFilter('Horror')}>
-              <a href="#!">Horror</a>
-            </li>
-            <li onClick={() => this.genreFilter('Drama')}>
-              <a href="#!">Drama</a>
-            </li>
-            <li onClick={() => this.genreFilter('Fantasy')}>
-              <a href="#!">Fantasy</a>
-            </li>
-            <li onClick={() => this.genreFilter('Sci-Fi')}>
-              <a href="#!">Sci-Fi</a>
-            </li>
-            <li onClick={() => this.genreFilter('Animated')}>
-              <a href="#!">Animated</a>
-            </li>
-            <li onClick={() => this.genreFilter('Documentary')}>
-              <a href="#!">Documentary</a>
-            </li>
-            <li onClick={() => this.genreFilter('Foreign')}>
-              <a href="#!">Foreign</a>
-            </li>
-            <li onClick={() => this.genreFilter('Comedy')}>
-              <a href="#!">Comedy</a>
-            </li>
-            <li onClick={() => this.genreFilter('Film-Noir')}>
-              <a href="#!">Film Noir</a>
-            </li>
-          </ul>
+          <GenreDropDown
+            genreFilter={this.genreFilter}
+            genreTag={this.state.genreTag}
+          />
           <a
             className="dropdown-trigger btn red darken-3 col s2"
             href=""
@@ -214,28 +177,12 @@ export class AllMovies extends Component {
             </li>
           </ul>
         </div>
-        <div className="row left-align">
-          <div className="chip">
-            {this.state.genreTag}
-            <i className="close material-icons">close</i>
-          </div>
-          <div className="chip">
-            {this.state.contentTag}
-            <i className="close material-icons">close</i>
-          </div>
-          <div className="chip">
-            {this.state.serviceTag}
-            <i className="close material-icons">close</i>
-          </div>
-          <div className="chip">
-            {this.state.languageTag}
-            <i className="close material-icons">close</i>
-          </div>
-          <div className="chip">
-            Tag
-            <i className="close material-icons">close</i>
-          </div>
-        </div>
+        <Tags
+          genreTag={this.state.genreTag}
+          contentTag={this.state.contentTag}
+          serviceTag={this.state.serviceTag}
+          languageTag={this.state.languageTag}
+        />
         <div className="row right-align">
           <a
             className="dropdown-trigger btn right"
@@ -259,7 +206,10 @@ export class AllMovies extends Component {
               <a href="#!">Rotten Tomatoes Score</a>
             </li>
           </ul>
-
+          <Languages
+            languageSet={this.languageSet}
+            languageTag={this.state.languageTag}
+          />
           <a
             className="dropdown-trigger btn right red darken-3 col s2 flow-text"
             href=""
@@ -323,46 +273,6 @@ export class AllMovies extends Component {
                   {/* </div> */}
                 </p>
               </form>
-            </li>
-          </ul>
-          <a
-            className="dropdown-trigger btn right red darken-3 col s2 flow-text dropdownWidth"
-            href=""
-            data-target="dropdown6"
-          >
-            <i className="material-icons right">arrow_drop_down</i>
-            {this.state.languageTag}
-          </a>
-          <ul id="dropdown6" className="dropdown-content">
-            <li onClick={() => this.languageSet('English')}>
-              <a>English</a>
-            </li>
-            <li onClick={() => this.languageSet('Spanish')}>
-              <a>Spanish</a>
-            </li>
-            <li onClick={() => this.languageSet('Italian')}>
-              <a>Italian</a>
-            </li>
-            <li onClick={() => this.languageSet('German')}>
-              <a>German</a>
-            </li>
-            <li onClick={() => this.languageSet('Japanese')}>
-              <a>Japanese</a>
-            </li>
-            <li onClick={() => this.languageSet('Korean')}>
-              <a>Korean</a>
-            </li>
-            <li onClick={() => this.languageSet('Arabic')}>
-              <a>Arabic</a>
-            </li>
-            <li onClick={() => this.languageSet('Russian')}>
-              <a>Russian</a>
-            </li>
-            <li onClick={() => this.languageSet('Thai')}>
-              <a>Thai</a>
-            </li>
-            <li onClick={() => this.languageSet('Hindi')}>
-              <a>Hindi</a>
             </li>
           </ul>
         </div>
