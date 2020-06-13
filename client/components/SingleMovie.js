@@ -16,6 +16,9 @@ export class SingleMovie extends Component {
     const id = this.props.match.params.id
     const found = dummyData.find(element => Number(element.id) === Number(id))
     this.setState({id, found})
+    $(document).ready(function() {
+      $('.materialboxed').materialbox()
+    })
   }
 
   render() {

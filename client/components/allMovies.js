@@ -1,9 +1,14 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import {Titles} from './Titles'
 import Tags from './Tags'
 import {GenreDropDown} from './genreDropDown'
 import {dummyDataOriginal} from '../DummyDataOriginal'
 import {Languages} from './Languages'
+import {Sliders} from './Sliders'
+import {Sort} from './Sort'
+import {Services} from './Services'
+import {Content} from './Content'
 
 // import Nouislider from 'nouislider-react'
 // import css from "./nouislider.css";
@@ -15,53 +20,52 @@ export class AllMovies extends Component {
     this.sortByIMDB = this.sortByIMDB.bind(this)
     this.sortByPop = this.sortByPop.bind(this)
     this.sortByAlphabet = this.sortByAlphabet.bind(this)
+    this.sortByRT = this.sortByRT.bind(this)
     this.contentFilter = this.contentFilter.bind(this)
     this.filterFunc = this.filterFunc.bind(this)
     this.languageSet = this.languageSet.bind(this)
+    this.orderChangeFunc = this.orderChangeFunc.bind(this)
     this.state = {
       dummyData: dummyDataOriginal,
-      serviceFilt: 'Inactive',
-      contentFilt: 'Inactive',
-      genreFilt: 'Inactive',
       serviceTag: 'Every Service',
       genreTag: 'All',
       contentTag: 'Movies/TV',
-      languageTag: 'All Languages'
+      languageTag: 'All Languages',
+      sortTag: 'Sort By Default',
+      sortOrder: 'ascending'
     }
   }
 
   async genreFilter(tag) {
-    await this.setState({genreTag: tag, genreFilt: 'Active'})
+    await this.setState({genreTag: tag})
     this.filterFunc()
   }
 
   async serviceFilter(tag) {
-    await this.setState({serviceTag: tag, serviceFilt: 'Active'})
+    await this.setState({serviceTag: tag})
     this.filterFunc()
   }
   async contentFilter(tag) {
-    await this.setState({contentTag: tag, contentFilt: 'Active'})
+    await this.setState({contentTag: tag})
     this.filterFunc()
   }
 
-  filterFunc() {
-    // let {serviceFilt, contentFilt, genreFilt} = this.state
+  async orderChangeFunc() {
+    console.log('orderChangeFunc is firing')
+    await this.setState({sortOrder: 'ascending'})
+  }
 
-    // if(serviceFilt === 'Active'){
+  filterFunc() {
     let serviceFiltered = dummyDataOriginal.filter(movie => {
       return movie.whereWatch.includes(this.state.serviceTag)
     })
     this.setState({dummyData: serviceFiltered})
-    // }
 
-    // if(contentFilt === 'Active'){
     let contentFiltered = this.state.dummyData.filter(movie => {
       return movie.contentTag.includes(this.state.contentTag)
     })
     this.setState({dummyData: contentFiltered})
-    // }
 
-    // if(genreFilt === 'Active'){
     let genreFiltered = this.state.dummyData.filter(movie => {
       return movie.genreTag.includes(this.state.genreTag)
     })
@@ -75,23 +79,45 @@ export class AllMovies extends Component {
   }
 
   sortByIMDB() {
-    let sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
-      return movie2.imdbScore - movie1.imdbScore
-    })
-    this.setState({dummyData: sortedData})
+    let sortOrder = this.state.sortOrder
+    let sortedData
+
+    if (sortOrder === 'ascending') {
+      this.setState({sortOrder: 'descending'})
+      sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
+        return movie2.imdbScore - movie1.imdbScore
+      })
+    } else {
+      this.setState({sortOrder: 'ascending'})
+      sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
+        return movie1.imdbScore - movie2.imdbScore
+      })
+    }
+    this.setState({dummyData: sortedData, sortTag: 'Sort By IMDB Score'})
   }
   sortByRT() {
-    let sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
-      return movie2.rottenTomatoes - movie1.rottenTomatoes
-    })
-    this.setState({dummyData: sortedData})
+    let sortOrder = this.state.sortOrder
+    let sortedData
+    if (sortOrder === 'ascending') {
+      this.setState({sortOrder: 'descending'})
+      sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
+        return movie2.rottenTomatoes - movie1.rottenTomatoes
+      })
+    } else {
+      this.setState({sortOrder: 'ascending'})
+      sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
+        return movie1.rottenTomatoes - movie2.rottenTomatoes
+      })
+    }
+    this.setState({dummyData: sortedData, sortTag: 'Sort By RT Score'})
   }
 
   sortByPop() {
+    let sortOrder = this.state.sortOrder
     let sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
       return movie2.pop - movie1.pop
     })
-    this.setState({dummyData: sortedData})
+    this.setState({dummyData: sortedData, sortTag: 'Sort By Popularity'})
   }
   async languageSet(tag) {
     await this.setState({languageTag: tag})
@@ -99,9 +125,7 @@ export class AllMovies extends Component {
   }
 
   sortByAlphabet() {
-    // let sortedData = this.state.dummyData.sort(function(movie1, movie2){
-    //   return movie2.title - movie1.title
-    // })
+    let sortOrder = this.state.sortOrder
     let sortedData = dummyDataOriginal.sort(function(a, b) {
       var nameA = a.title.toUpperCase()
       var nameB = b.title.toUpperCase()
@@ -113,12 +137,12 @@ export class AllMovies extends Component {
       }
       return 0
     })
-    this.setState({dummyData: sortedData})
+    this.setState({dummyData: sortedData, sortTag: 'Sort By Alphabet'})
   }
 
   render() {
     let dummyData = this.state.dummyData
-    console.log('logging language in allMovies', this.state.languageTag)
+
     return (
       <div className="container">
         <p />
@@ -131,51 +155,18 @@ export class AllMovies extends Component {
             genreFilter={this.genreFilter}
             genreTag={this.state.genreTag}
           />
-          <a
-            className="dropdown-trigger btn red darken-3 col s2"
-            href=""
-            data-target="dropdown2"
-          >
-            <i className="material-icons right">arrow_drop_down</i>
-            {this.state.contentTag}
-          </a>
-          <ul id="dropdown2" className="dropdown-content">
-            <li onClick={() => this.contentFilter('Movies/TV')}>
-              <a href="#!">Movies and TV Shows</a>
-            </li>
-            <li onClick={() => this.contentFilter('Movies')}>
-              <a href="#!">Movies</a>
-            </li>
-            <li onClick={() => this.contentFilter('TV Shows')}>
-              <a href="#!">TV Shows</a>
-            </li>
-          </ul>
+          <Content
+            contentTag={this.state.contentTag}
+            contentFilter={this.contentFilter}
+          />
           <div className="valign-wrapper left-align col s1">
             <h5>On</h5>
           </div>
 
-          <a
-            className="dropdown-trigger btn red darken-3 col s2 dropdownWidth"
-            href=""
-            data-target="dropdown3"
-          >
-            <i className="material-icons right">arrow_drop_down</i>
-            {this.state.serviceTag}
-          </a>
-          <ul id="dropdown3" className="dropdown-content">
-            <li onClick={() => this.serviceFilter('Netflix')}>
-              <a href="#!">Netflix</a>
-            </li>
-            <li onClick={() => this.serviceFilter('Hulu')}>
-              <a href="#!">Hulu</a>
-            </li>
-            <li onClick={() => this.serviceFilter('Amazon')}>
-              <a href="#!">Amazon Prime</a>
-            </li>
-            <li onClick={() => this.serviceFilter('Every Service')}>
-              <a href="#!">Every Service</a>
-            </li>
-          </ul>
+          <Services
+            serviceTag={this.state.serviceTag}
+            serviceFilter={this.serviceFilter}
+          />
         </div>
         <Tags
           genreTag={this.state.genreTag}
@@ -184,97 +175,19 @@ export class AllMovies extends Component {
           languageTag={this.state.languageTag}
         />
         <div className="row right-align">
-          <a
-            className="dropdown-trigger btn right"
-            href=""
-            data-target="dropdown1"
-          >
-            <i className="material-icons right">arrow_drop_down</i>
-            Sort by Default
-          </a>
-          <ul id="dropdown1" className="dropdown-content">
-            <li onClick={() => this.sortByPop()}>
-              <a href="#!">Popularity</a>
-            </li>
-            <li onClick={() => this.sortByAlphabet()}>
-              <a href="#!">Alphabetical</a>
-            </li>
-            <li onClick={() => this.sortByIMDB()}>
-              <a href="#!">IMDB Score</a>
-            </li>
-            <li onClick={() => this.sortByRT()}>
-              <a href="#!">Rotten Tomatoes Score</a>
-            </li>
-          </ul>
+          <Sort
+            sortByPop={this.sortByPop}
+            sortByAlphabet={this.sortByAlphabet}
+            sortByIMDB={this.sortByIMDB}
+            sortByRT={this.sortByRT}
+            sortTag={this.state.sortTag}
+            orderChange={this.orderChangeFunc}
+          />
           <Languages
             languageSet={this.languageSet}
             languageTag={this.state.languageTag}
           />
-          <a
-            className="dropdown-trigger btn right red darken-3 col s2 flow-text"
-            href=""
-            data-target="dropdown5"
-          >
-            <i className="material-icons right">arrow_drop_down</i>
-            Filters
-          </a>
-          <ul id="dropdown5" className="dropdown-content">
-            <li>
-              <a href="#!">Release Year</a>
-              {/* <div id="test-slider"></div> */}
-              <form action="#">
-                <p className="range-field">
-                  1900
-                  <input type="range" id="test5" min="1900" max="2020" />
-                  2020
-                </p>
-              </form>
-            </li>
-            <li>
-              <a href="#!">IMDB Score</a>
-              {/* <div id="test-slider"></div> */}
-              <form action="#">
-                <p className="range-field">
-                  0
-                  <input type="range" id="test5" min="0" max="100" />
-                  10
-                </p>
-              </form>
-            </li>
-            <li>
-              <a href="#!">Rotten Tomatoes Score</a>
-              {/* <div id="test-slider"></div> */}
-              <form action="#">
-                <p className="range-field">
-                  0%
-                  <input type="range" id="test5" min="0" max="100" />
-                  100%
-                </p>
-              </form>
-            </li>
-            <li>
-              <a href="#!"># of IMDB Votes</a>
-              {/* <div id="test-slider"></div> */}
-              <form action="#">
-                <p className="range-field">
-                  {/* <div className="left"> */}
-                  0
-                  {/* </div> */}
-                  <input
-                    type="range"
-                    id="test5"
-                    min="0"
-                    max="100"
-
-                    // value="0"
-                  />
-                  {/* <div className="right"> */}
-                  2 Mil.
-                  {/* </div> */}
-                </p>
-              </form>
-            </li>
-          </ul>
+          <Sliders />
         </div>
 
         {/* <div className="right-align">
@@ -283,7 +196,7 @@ export class AllMovies extends Component {
             Filter
           </a>
         </div> */}
-        {dummyData.length ? (
+        {/* {dummyData.length ? (
           <div className="row">
             {dummyData.map(function(movie) {
               return (
@@ -296,7 +209,7 @@ export class AllMovies extends Component {
                           className="responsive-img"
                           alt="something"
                         />
-                        <span className="card-title">{movie.year}</span>
+                        <span className="card-title outline">{movie.year}</span>
                       </div>
                     </Link>
                     <div className="card-panel hoverable">
@@ -311,7 +224,8 @@ export class AllMovies extends Component {
           </div>
         ) : (
           <h1>No Titles Meet Your Criteria</h1>
-        )}
+        )} */}
+        <Titles dummyData={dummyData} />
         <ul className="pagination">
           <li className="disabled">
             <a href="#!">

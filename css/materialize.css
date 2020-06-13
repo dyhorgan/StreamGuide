@@ -4836,7 +4836,7 @@ small {
 
 .card .card-title {
   font-size: 24px;
-  font-weight: 300;
+  font-weight: bolder;
 }
 
 .card .card-title.activator {
