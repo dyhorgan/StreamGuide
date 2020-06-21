@@ -189,42 +189,6 @@ export class AllMovies extends Component {
           />
           <Sliders />
         </div>
-
-        {/* <div className="right-align">
-          <a className="dropdown-trigger btn waves-effect orange darken-3 white-text col s2 right-align">
-            <i className="material-icons right">arrow_drop_down</i>
-            Filter
-          </a>
-        </div> */}
-        {/* {dummyData.length ? (
-          <div className="row">
-            {dummyData.map(function(movie) {
-              return (
-                <div key={movie.id} className="col s12 m6 l3">
-                  <div className="card large">
-                    <Link to={`/SingleMovie/${movie.id}`}>
-                      <div className="card-image">
-                        <img
-                          src={movie.imgUrl}
-                          className="responsive-img"
-                          alt="something"
-                        />
-                        <span className="card-title outline">{movie.year}</span>
-                      </div>
-                    </Link>
-                    <div className="card-panel hoverable">
-                      <p>{movie.title}</p>
-                      <p>IMDB Score: {movie.imdbScore}</p>
-                      <p>Rotten Tomatoes: {movie.rottenTomatoes}%</p>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        ) : (
-          <h1>No Titles Meet Your Criteria</h1>
-        )} */}
         <Titles dummyData={dummyData} />
         <ul className="pagination">
           <li className="disabled">

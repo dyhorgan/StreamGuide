@@ -19,11 +19,11 @@ export class Search extends React.Component {
     }
     this.submitFunc = this.submitFunc.bind(this)
     this.onChangeFunc = this.onChangeFunc.bind(this)
+    this.keyPressed = this.keyPressed.bind(this)
   }
 
   onChangeFunc(event) {
     this.setState({searchInput: event.target.value})
-    console.log(this.state.searchInput)
   }
   async submitFunc() {
     // const {history} = this.props
@@ -39,8 +39,14 @@ export class Search extends React.Component {
     location.href = `/SingleMovie/${this.state.singleMovieId}`
   }
 
+  keyPressed(event) {
+    event.preventDefault()
+    if (event.key === 'Enter') {
+      this.submitFunc(event)
+    }
+  }
+
   render() {
-    console.log('logging props in search', this.props)
     return (
       <div className="nav-wrapper">
         {/* <form className="right" onSubmit={this.submitFunc}>
@@ -62,6 +68,7 @@ export class Search extends React.Component {
               type="search"
               name="searchInput"
               onChange={this.onChangeFunc}
+              onKeyPress={this.keyPressed}
               required
             />
             <label className="label-icon" htmlFor="search">
