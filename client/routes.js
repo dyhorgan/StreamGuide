@@ -8,6 +8,7 @@ import {AllMovies} from './components/allMovies'
 import {Home} from './components/Home'
 import {Playground} from './components/MaterializePlayground'
 import {SingleMovie} from './components/SingleMovie'
+import {SearchResults} from './components/SearchResults'
 
 /**
  * COMPONENT
@@ -26,8 +27,19 @@ class Routes extends Component {
 
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/allMovies" component={AllMovies} />
+        <Route
+          path="/allMovies"
+          component={() => (
+            <AllMovies
+              results={this.props.results}
+              showResults={this.props.showResults}
+              showResultsFunc={this.props.showResultsFunc}
+              compFunc={this.props.compFunc}
+            />
+          )}
+        />
         <Route path="/SingleMovie/:id" component={SingleMovie} />
+        <Route path="/SearchResults" component={SearchResults} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
