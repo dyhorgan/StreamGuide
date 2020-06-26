@@ -4,8 +4,9 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {Search} from './Search'
+import {dummyDataOriginal} from '../DummyDataOriginal'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
+const Navbar = ({handleClick, isLoggedIn, showResultsFunc}) => (
   <div className="navbar-fixed">
     <nav>
       <div className="nav-wrapper">
@@ -24,7 +25,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         ) : (
           <div>
             {/* <nav> */}
-            <Search />
+            <Search showResultsFunc={showResultsFunc} />
             {/* </nav> */}
 
             <ul id="nav-mobile" className="center hide-on-med-and-down">
