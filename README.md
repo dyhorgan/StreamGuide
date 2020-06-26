@@ -16,4 +16,4 @@ First clone Start with npm install to get all our dependencies
 
 Running npm run start-dev will get you searching!
 
-Visit http://localhost:8080 to view on a local server.
+Visit http://localhost:3000 to view on a local server.
