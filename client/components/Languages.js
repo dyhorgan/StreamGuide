@@ -1,7 +1,6 @@
 import React from 'react'
 
 export const Languages = props => {
-  console.log('languageTag', props.languageTag)
   return (
     <div>
       <a
