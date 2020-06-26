@@ -9,6 +9,45 @@ import {Sliders} from './Sliders'
 import {Sort} from './Sort'
 import {Services} from './Services'
 import {Content} from './Content'
+import {SearchResults} from './SearchResults'
+
+function compFunc(a, b) {
+  if (a.length == 0) return b.length
+  if (b.length == 0) return a.length
+
+  var matrix = []
+
+  // increment along the first column of each row
+  var i
+  for (i = 0; i <= b.length; i++) {
+    matrix[i] = [i]
+  }
+
+  // increment each column in the first row
+  var j
+  for (j = 0; j <= a.length; j++) {
+    matrix[0][j] = j
+  }
+
+  // Fill in the rest of the matrix
+  for (i = 1; i <= b.length; i++) {
+    for (j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) == a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1]
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1, // substitution
+          Math.min(
+            matrix[i][j - 1] + 1, // insertion
+            matrix[i - 1][j] + 1
+          )
+        ) // deletion
+      }
+    }
+  }
+
+  return matrix[b.length][a.length]
+}
 
 // import Nouislider from 'nouislider-react'
 // import css from "./nouislider.css";
@@ -25,6 +64,8 @@ export class AllMovies extends Component {
     this.filterFunc = this.filterFunc.bind(this)
     this.languageSet = this.languageSet.bind(this)
     this.orderChangeFunc = this.orderChangeFunc.bind(this)
+    this.tagClose = this.tagClose.bind(this)
+
     this.state = {
       dummyData: dummyDataOriginal,
       serviceTag: 'Every Service',
@@ -50,9 +91,11 @@ export class AllMovies extends Component {
     this.filterFunc()
   }
 
-  async orderChangeFunc() {
-    console.log('orderChangeFunc is firing')
-    await this.setState({sortOrder: 'ascending'})
+  async orderChangeFunc(string) {
+    if (string !== this.state.sortTag) {
+      console.log('orderChangeFunc is firing')
+      await this.setState({sortOrder: 'ascending'})
+    }
   }
 
   filterFunc() {
@@ -75,69 +118,114 @@ export class AllMovies extends Component {
       return movie.languages.includes(this.state.languageTag)
     })
     this.setState({dummyData: languageFiltered})
-    // }
   }
 
-  sortByIMDB() {
+  async sortByIMDB() {
+    await this.orderChangeFunc('Sort By IMDB Score')
     let sortOrder = this.state.sortOrder
     let sortedData
-
     if (sortOrder === 'ascending') {
       this.setState({sortOrder: 'descending'})
-      sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
+      sortedData = this.state.dummyData.sort(function(movie1, movie2) {
         return movie2.imdbScore - movie1.imdbScore
       })
     } else {
       this.setState({sortOrder: 'ascending'})
-      sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
+      sortedData = this.state.dummyData.sort(function(movie1, movie2) {
         return movie1.imdbScore - movie2.imdbScore
       })
     }
     this.setState({dummyData: sortedData, sortTag: 'Sort By IMDB Score'})
   }
-  sortByRT() {
+  async sortByRT() {
+    await this.orderChangeFunc('Sort By RT Score')
     let sortOrder = this.state.sortOrder
     let sortedData
     if (sortOrder === 'ascending') {
       this.setState({sortOrder: 'descending'})
-      sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
+      sortedData = this.state.dummyData.sort(function(movie1, movie2) {
         return movie2.rottenTomatoes - movie1.rottenTomatoes
       })
     } else {
       this.setState({sortOrder: 'ascending'})
-      sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
+      sortedData = this.state.dummyData.sort(function(movie1, movie2) {
         return movie1.rottenTomatoes - movie2.rottenTomatoes
       })
     }
     this.setState({dummyData: sortedData, sortTag: 'Sort By RT Score'})
   }
 
-  sortByPop() {
+  async sortByPop() {
+    await this.orderChangeFunc('Sort By Popularity')
     let sortOrder = this.state.sortOrder
-    let sortedData = dummyDataOriginal.sort(function(movie1, movie2) {
-      return movie2.pop - movie1.pop
-    })
+    let sortedData
+    if (sortOrder === 'ascending') {
+      this.setState({sortOrder: 'descending'})
+      sortedData = this.state.dummyData.sort(function(movie1, movie2) {
+        return movie2.pop - movie1.pop
+      })
+    } else {
+      this.setState({sortOrder: 'ascending'})
+      sortedData = this.state.dummyData.sort(function(movie1, movie2) {
+        return movie1.pop - movie2.pop
+      })
+    }
+
     this.setState({dummyData: sortedData, sortTag: 'Sort By Popularity'})
   }
+
+  async sortByAlphabet() {
+    await this.orderChangeFunc('Sort By Alphabet')
+    let sortOrder = this.state.sortOrder
+    let sortedData
+    if (sortOrder === 'ascending') {
+      this.setState({sortOrder: 'descending'})
+      sortedData = this.state.dummyData.sort(function(a, b) {
+        var nameA = a.title.toUpperCase()
+        var nameB = b.title.toUpperCase()
+        if (nameA < nameB) {
+          return -1
+        }
+        if (nameA > nameB) {
+          return 1
+        }
+        return 0
+      })
+    } else {
+      this.setState({sortOrder: 'ascending'})
+      sortedData = this.state.dummyData.sort(function(a, b) {
+        var nameA = a.title.toUpperCase()
+        var nameB = b.title.toUpperCase()
+        if (nameA < nameB) {
+          return 1
+        }
+        if (nameA > nameB) {
+          return -1
+        }
+        return 0
+      })
+    }
+
+    this.setState({dummyData: sortedData, sortTag: 'Sort By Alphabet'})
+  }
+
   async languageSet(tag) {
     await this.setState({languageTag: tag})
     this.filterFunc()
   }
-
-  sortByAlphabet() {
-    let sortOrder = this.state.sortOrder
-    let sortedData = dummyDataOriginal.sort(function(a, b) {
-      var nameA = a.title.toUpperCase()
-      var nameB = b.title.toUpperCase()
-      if (nameA < nameB) {
-        return -1
-      }
-      if (nameA > nameB) {
-        return 1
-      }
-      return 0
-    })
-    this.setState({dummyData: sortedData, sortTag: 'Sort By Alphabet'})
+  tagClose(string) {
+    if (string === 'genre') {
+      this.genreFilter('All')
+    }
+    if (string === 'content') {
+      this.contentFilter('Movies/TV')
+    }
+    if (string === 'service') {
+      this.serviceFilter('Every Service')
+    }
+    if (string === 'language') {
+      this.languageSet('All Languages')
+    }
   }
 
   render() {
@@ -145,69 +233,76 @@ export class AllMovies extends Component {
 
     return (
       <div className="container">
-        <p />
-        {/* <Nouislider range={{ min: 0, max: 100 }} start={[0, 100]}/> */}
-        <div className="row left-align">
-          {/* <button className="btn waves-effect red darken-3 white-text col s2">
+        {!this.props.showResults ? (
+          <div>
+            <p />
+
+            <div className="row left-align">
+              {/* <button className="btn waves-effect red darken-3 white-text col s2">
             <i className="material-icons right">arrow_drop_down</i>All
           </button> */}
-          <GenreDropDown
-            genreFilter={this.genreFilter}
-            genreTag={this.state.genreTag}
-          />
-          <Content
-            contentTag={this.state.contentTag}
-            contentFilter={this.contentFilter}
-          />
-          <div className="valign-wrapper left-align col s1">
-            <h5>On</h5>
-          </div>
+              <GenreDropDown
+                genreFilter={this.genreFilter}
+                genreTag={this.state.genreTag}
+              />
+              <Content
+                contentTag={this.state.contentTag}
+                contentFilter={this.contentFilter}
+              />
+              <div className="valign-wrapper left-align col s1">
+                <h5>On</h5>
+              </div>
 
-          <Services
-            serviceTag={this.state.serviceTag}
-            serviceFilter={this.serviceFilter}
-          />
-        </div>
-        <Tags
-          genreTag={this.state.genreTag}
-          contentTag={this.state.contentTag}
-          serviceTag={this.state.serviceTag}
-          languageTag={this.state.languageTag}
-        />
-        <div className="row right-align">
-          <Sort
-            sortByPop={this.sortByPop}
-            sortByAlphabet={this.sortByAlphabet}
-            sortByIMDB={this.sortByIMDB}
-            sortByRT={this.sortByRT}
-            sortTag={this.state.sortTag}
-            orderChange={this.orderChangeFunc}
-          />
-          <Languages
-            languageSet={this.languageSet}
-            languageTag={this.state.languageTag}
-          />
-          <Sliders />
-        </div>
-        <Titles dummyData={dummyData} />
-        <ul className="pagination">
-          <li className="disabled">
-            <a href="#!">
-              <i className="material-icons">chevron_left</i>
-            </a>
-          </li>
-          <li className="active">
-            <a href="#!">1</a>
-          </li>
-          <li className="waves-effect">
-            <a href="#!">2</a>
-          </li>
-          <li className="waves-effect">
-            <a href="#!">
-              <i className="material-icons">chevron_right</i>
-            </a>
-          </li>
-        </ul>
+              <Services
+                serviceTag={this.state.serviceTag}
+                serviceFilter={this.serviceFilter}
+              />
+            </div>
+            <Tags
+              genreTag={this.state.genreTag}
+              contentTag={this.state.contentTag}
+              serviceTag={this.state.serviceTag}
+              languageTag={this.state.languageTag}
+              tagClose={this.tagClose}
+            />
+            <div className="row right-align">
+              <Sort
+                sortByPop={this.sortByPop}
+                sortByAlphabet={this.sortByAlphabet}
+                sortByIMDB={this.sortByIMDB}
+                sortByRT={this.sortByRT}
+                sortTag={this.state.sortTag}
+                orderChange={this.orderChangeFunc}
+              />
+              <Languages
+                languageSet={this.languageSet}
+                languageTag={this.state.languageTag}
+              />
+              <Sliders />
+            </div>
+            <Titles dummyData={dummyData} />
+            <ul className="pagination">
+              <li className="disabled">
+                <a href="#!">
+                  <i className="material-icons">chevron_left</i>
+                </a>
+              </li>
+              <li className="active">
+                <a href="#!">1</a>
+              </li>
+              <li className="waves-effect">
+                <a href="#!">2</a>
+              </li>
+              <li className="waves-effect">
+                <a href="#!">
+                  <i className="material-icons">chevron_right</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <SearchResults results={this.props.results} />
+        )}
       </div>
     )
   }
