@@ -12,14 +12,16 @@ export const Content = props => {
         {props.contentTag}
       </a>
       <ul id="dropdown2" className="dropdown-content">
-        <li onClick={() => props.contentFilter('Movies/TV')}>
-          <a href="#!">Movies and TV Shows</a>
+        <li>
+          <a onClick={() => props.contentFilter('Movies/TV')}>
+            Movies and TV Shows
+          </a>
         </li>
-        <li onClick={() => props.contentFilter('Movies')}>
-          <a href="#!">Movies</a>
+        <li>
+          <a onClick={() => props.contentFilter('Movies')}>Movies</a>
         </li>
-        <li onClick={() => props.contentFilter('TV Shows')}>
-          <a href="#!">TV Shows</a>
+        <li>
+          <a onClick={() => props.contentFilter('TV Shows')}>TV Shows</a>
         </li>
       </ul>
     </div>

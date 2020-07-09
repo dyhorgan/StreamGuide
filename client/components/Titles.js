@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 export const Titles = props => {
+  console.log('logging in titles', props.dummyData)
   return (
     <div>
       {props.dummyData.length ? (

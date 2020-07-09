@@ -14,16 +14,16 @@ export const Sort = props => {
       </a>
       <ul id="dropdown1" className="dropdown-content">
         <li onClick={() => props.sortByPop()}>
-          <a href="#!">Popularity</a>
+          <a>Popularity</a>
         </li>
         <li onClick={() => props.sortByAlphabet()}>
-          <a href="#!">Alphabetical</a>
+          <a>Alphabetical</a>
         </li>
         <li onClick={() => props.sortByIMDB()}>
-          <a href="#!">IMDB Score</a>
+          <a>IMDB Score</a>
         </li>
         <li onClick={() => props.sortByRT()}>
-          <a href="#!">Rotten Tomatoes Score</a>
+          <a>Rotten Tomatoes Score</a>
         </li>
       </ul>
     </div>

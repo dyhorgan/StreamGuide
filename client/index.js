@@ -6,9 +6,14 @@ import history from './history'
 import store from './store'
 import App from './app'
 
+import './wdyr'
+import 'react-hot-loader'
+import {hot} from 'react-hot-loader/root'
+
 // establishes socket connection
 import './socket'
 
+const HotApp = hot(App)
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>

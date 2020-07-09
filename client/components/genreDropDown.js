@@ -1,4 +1,5 @@
 import React from 'react'
+import {Dropdown} from 'react-bootstrap'
 
 export const GenreDropDown = props => {
   return (
@@ -12,40 +13,76 @@ export const GenreDropDown = props => {
         {props.genreTag}
       </a>
       <ul id="dropdown4" className="dropdown-content">
-        <li onClick={() => props.genreFilter('All')}>
-          <a href="#!">All</a>
+        <li>
+          <a onClick={() => props.genreFilter('All')}>All</a>
         </li>
-        <li onClick={() => props.genreFilter('Action')}>
-          <a href="#!">Action/Adventure</a>
+        <li>
+          <a onClick={() => props.genreFilter('Action')}>Action/Adventure</a>
         </li>
-        <li onClick={() => props.genreFilter('Horror')}>
-          <a href="#!">Horror</a>
+        <li className="center">
+          {/* <button onClick={() => props.genreFilter('Horror')} type="submit" >Horror</button> */}
+          <a onClick={() => props.genreFilter('Horror')}>Horror</a>
         </li>
-        <li onClick={() => props.genreFilter('Drama')}>
-          <a href="#!">Drama</a>
+        <li>
+          <a onClick={() => props.genreFilter('Drama')}>Drama</a>
         </li>
-        <li onClick={() => props.genreFilter('Fantasy')}>
-          <a href="#!">Fantasy</a>
+        <li>
+          <a onClick={() => props.genreFilter('Fantasy')}>Fantasy</a>
         </li>
-        <li onClick={() => props.genreFilter('Sci-Fi')}>
-          <a href="#!">Sci-Fi</a>
+        <li>
+          <a onClick={() => props.genreFilter('Sci-Fi')}>Sci-Fi</a>
         </li>
-        <li onClick={() => props.genreFilter('Animated')}>
-          <a href="#!">Animated</a>
+        <li>
+          <a onClick={() => props.genreFilter('Animated')}>Animated</a>
         </li>
-        <li onClick={() => props.genreFilter('Documentary')}>
-          <a href="#!">Documentary</a>
+        <li>
+          <a onClick={() => props.genreFilter('Documentary')}>Documentary</a>
         </li>
-        <li onClick={() => props.genreFilter('Foreign')}>
-          <a href="#!">Foreign</a>
+        <li>
+          <a onClick={() => props.genreFilter('Foreign')}>Foreign</a>
         </li>
-        <li onClick={() => props.genreFilter('Comedy')}>
-          <a href="#!">Comedy</a>
+        <li>
+          <a onClick={() => props.genreFilter('Comedy')}>Comedy</a>
         </li>
-        <li onClick={() => props.genreFilter('Film-Noir')}>
-          <a href="#!">Film Noir</a>
+        <li>
+          <a onClick={() => props.genreFilter('Film-Noir')}>Film Noir</a>
         </li>
       </ul>
     </div>
   )
 }
+
+// return (<div>
+//   <label htmlFor="genre">Choose a Genre:</label>
+//   <select name="genre">
+//     <option defaultValue="All" onClick={() => props.genreFilter('All')}>All</option>
+//     <option value="Action/Adventure" onClick={() => props.genreFilter('Action/Adventure')}>Action/Adventure</option>
+//     <option value="Horror" onClick={() => props.genreFilter('Horror')}>Horror</option>
+//     <option value="Drama" onClick={() => props.genreFilter('Drama')}>Drama</option>
+//     <option value="Fantasy" onClick={() => props.genreFilter('Fantasy')}>Fantasy</option>
+//     <option value="Sci-Fi" onClick={() => props.genreFilter('Sci-Fi')}>Sci-Fi</option>
+//     <option value="Animated" onClick={() => props.genreFilter('Animated')}>Animated</option>
+//     <option value="Documentary" onClick={() => props.genreFilter('Documentary')}>Documentary</option>
+//     <option value="Foreign" onClick={() => props.genreFilter('Foreign')}>Foreign</option>
+//     <option value="Comedy" onClick={() => props.genreFilter('Comedy')}>Comedy</option>
+//     <option value="Film-Noir" onClick={() => props.genreFilter('Film-Noir')}>Film-Noir</option>
+// </select></div>)
+// return <Dropdown>
+//   <Dropdown.Toggle variant="success" id="dropdown-basic">
+//     {props.genreTag}
+//   </Dropdown.Toggle>
+
+//   <Dropdown.Menu>
+//     <Dropdown.Item href="#/action-1" onClick={() => props.genreFilter('All')}>All</Dropdown.Item>
+//     <Dropdown.Item href="#/action-2" onClick={() => props.genreFilter('Action/Adventure')}>Action/Adventure</Dropdown.Item>
+//     <Dropdown.Item href="#/action-3" onClick={() => props.genreFilter('Horror')}>Horror</Dropdown.Item>
+//     <Dropdown.Item href="#/action-1" onClick={() => props.genreFilter('Drama')}>Drama</Dropdown.Item>
+//     <Dropdown.Item href="#/action-1" onClick={() => props.genreFilter('Fantasy')}>Fantasy</Dropdown.Item>
+//     <Dropdown.Item href="#/action-1" onClick={() => props.genreFilter('Sci-Fi')}>Sci-Fi</Dropdown.Item>
+//     <Dropdown.Item href="#/action-1" onClick={() => props.genreFilter('Animated')}>Animated</Dropdown.Item>
+//     <Dropdown.Item href="#/action-1" onClick={() => props.genreFilter('Documentary')}>Documentary</Dropdown.Item>
+//     <Dropdown.Item href="#/action-1" onClick={() => props.genreFilter('Foreign')}>Foreign</Dropdown.Item>
+//     <Dropdown.Item href="#/action-1" onClick={() => props.genreFilter('Comedy')}>Comedy</Dropdown.Item>
+//     <Dropdown.Item href="#/action-1" onClick={() => props.genreFilter('Film-Noir')}>Film-Noir</Dropdown.Item>
+//   </Dropdown.Menu>
+//  </Dropdown>

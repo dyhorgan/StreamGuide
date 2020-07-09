@@ -6,7 +6,7 @@ import {logout} from '../store'
 import {Search} from './Search'
 import {dummyDataOriginal} from '../DummyDataOriginal'
 
-const Navbar = ({handleClick, isLoggedIn, showResultsFunc}) => (
+const Navbar = ({handleClick, isLoggedIn, showResultsFunc, browseClick}) => (
   <div className="navbar-fixed">
     <nav>
       <div className="nav-wrapper">
@@ -39,7 +39,9 @@ const Navbar = ({handleClick, isLoggedIn, showResultsFunc}) => (
                 <Link to="/signup">Sign Up</Link>
               </li>
               <li>
-                <Link to="/allMovies">Browse</Link>
+                <Link to="/allMovies" onClick={browseClick}>
+                  Browse
+                </Link>
               </li>
             </ul>
           </div>

@@ -2,7 +2,6 @@ import React from 'react'
 import {dummyDataOriginal} from './DummyDataOriginal'
 import {Navbar} from './components'
 import Routes from './routes'
-import {BrowserRouter} from 'react-router-dom'
 
 class App extends React.Component {
   constructor() {
@@ -13,6 +12,7 @@ class App extends React.Component {
     }
     this.showResultsFunc = this.showResultsFunc.bind(this)
     this.compFunc = this.compFunc.bind(this)
+    this.browseClick = this.browseClick.bind(this)
   }
   compFunc(a, b) {
     if (a.length == 0) return b.length
@@ -20,36 +20,34 @@ class App extends React.Component {
 
     var matrix = []
 
-    // increment along the first column of each row
     var i
     for (i = 0; i <= b.length; i++) {
       matrix[i] = [i]
     }
 
-    // increment each column in the first row
     var j
     for (j = 0; j <= a.length; j++) {
       matrix[0][j] = j
     }
 
-    // Fill in the rest of the matrix
     for (i = 1; i <= b.length; i++) {
       for (j = 1; j <= a.length; j++) {
         if (b.charAt(i - 1) == a.charAt(j - 1)) {
           matrix[i][j] = matrix[i - 1][j - 1]
         } else {
           matrix[i][j] = Math.min(
-            matrix[i - 1][j - 1] + 1, // substitution
-            Math.min(
-              matrix[i][j - 1] + 1, // insertion
-              matrix[i - 1][j] + 1
-            )
-          ) // deletion
+            matrix[i - 1][j - 1] + 1,
+            Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1)
+          )
         }
       }
     }
 
     return matrix[b.length][a.length]
+  }
+
+  browseClick() {
+    this.setState({showResults: false})
   }
 
   async showResultsFunc(string) {
@@ -78,6 +76,7 @@ class App extends React.Component {
           results={this.state.results}
           showResults={this.state.showResults}
           showResultsFunc={this.showResultsFunc}
+          browseClick={this.browseClick}
         />
         <Routes
           results={this.state.results}

@@ -12,17 +12,17 @@ export const Services = props => {
         {props.serviceTag}
       </a>
       <ul id="dropdown3" className="dropdown-content">
-        <li onClick={() => props.serviceFilter('Netflix')}>
-          <a href="#!">Netflix</a>
+        <li>
+          <a onClick={() => props.serviceFilter('Netflix')}>Netflix</a>
         </li>
-        <li onClick={() => props.serviceFilter('Hulu')}>
-          <a href="#!">Hulu</a>
+        <li>
+          <a onClick={() => props.serviceFilter('Hulu')}>Hulu</a>
         </li>
         <li onClick={() => props.serviceFilter('Amazon')}>
-          <a href="#!">Amazon Prime</a>
+          <a>Amazon Prime</a>
         </li>
         <li onClick={() => props.serviceFilter('Every Service')}>
-          <a href="#!">Every Service</a>
+          <a>Every Service</a>
         </li>
       </ul>
     </div>

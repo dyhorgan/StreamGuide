@@ -11,47 +11,10 @@ import {Services} from './Services'
 import {Content} from './Content'
 import {SearchResults} from './SearchResults'
 
-function compFunc(a, b) {
-  if (a.length == 0) return b.length
-  if (b.length == 0) return a.length
-
-  var matrix = []
-
-  // increment along the first column of each row
-  var i
-  for (i = 0; i <= b.length; i++) {
-    matrix[i] = [i]
-  }
-
-  // increment each column in the first row
-  var j
-  for (j = 0; j <= a.length; j++) {
-    matrix[0][j] = j
-  }
-
-  // Fill in the rest of the matrix
-  for (i = 1; i <= b.length; i++) {
-    for (j = 1; j <= a.length; j++) {
-      if (b.charAt(i - 1) == a.charAt(j - 1)) {
-        matrix[i][j] = matrix[i - 1][j - 1]
-      } else {
-        matrix[i][j] = Math.min(
-          matrix[i - 1][j - 1] + 1, // substitution
-          Math.min(
-            matrix[i][j - 1] + 1, // insertion
-            matrix[i - 1][j] + 1
-          )
-        ) // deletion
-      }
-    }
-  }
-
-  return matrix[b.length][a.length]
-}
-
 // import Nouislider from 'nouislider-react'
 // import css from "./nouislider.css";
 export class AllMovies extends Component {
+  // static whyDidYouRender = true
   constructor() {
     super()
     this.genreFilter = this.genreFilter.bind(this)
@@ -77,8 +40,61 @@ export class AllMovies extends Component {
     }
   }
 
+  componentDidMount() {
+    $(document).ready(function() {
+      $('.dropdown-trigger').dropdown()
+    })
+
+    $(document).ready(function() {
+      $('.fixed-action-btn').floatingActionButton()
+    })
+
+    $(document).ready(function() {
+      $('.materialboxed').materialbox()
+    })
+
+    $(document).ready(function() {
+      $('.chips').chips()
+      $('.chips-initial').chips({
+        data: [
+          {
+            tag: 'Apple'
+          },
+          {
+            tag: 'Microsoft'
+          },
+          {
+            tag: 'Google'
+          }
+        ]
+      })
+    })
+
+    $(document).ready(function() {
+      $('.chips-placeholder').chips({
+        placeholder: 'Enter a tag',
+        secondaryPlaceholder: '+Tag'
+      })
+    })
+
+    $(document).ready(function() {
+      $('.chips-autocomplete').chips({
+        autocompleteOptions: {
+          data: {
+            Apple: null,
+            Microsoft: null,
+            Google: null
+          },
+          limit: Infinity,
+          minLength: 1
+        }
+      })
+    })
+  }
+
   async genreFilter(tag) {
     await this.setState({genreTag: tag})
+
     this.filterFunc()
   }
 
@@ -93,31 +109,31 @@ export class AllMovies extends Component {
 
   async orderChangeFunc(string) {
     if (string !== this.state.sortTag) {
-      console.log('orderChangeFunc is firing')
       await this.setState({sortOrder: 'ascending'})
     }
   }
 
-  filterFunc() {
+  async filterFunc() {
     let serviceFiltered = dummyDataOriginal.filter(movie => {
       return movie.whereWatch.includes(this.state.serviceTag)
     })
-    this.setState({dummyData: serviceFiltered})
+    await this.setState({dummyData: serviceFiltered})
 
     let contentFiltered = this.state.dummyData.filter(movie => {
       return movie.contentTag.includes(this.state.contentTag)
     })
-    this.setState({dummyData: contentFiltered})
+    await this.setState({dummyData: contentFiltered})
 
     let genreFiltered = this.state.dummyData.filter(movie => {
       return movie.genreTag.includes(this.state.genreTag)
     })
-    this.setState({dummyData: genreFiltered})
+    await this.setState({dummyData: genreFiltered})
 
     let languageFiltered = this.state.dummyData.filter(movie => {
       return movie.languages.includes(this.state.languageTag)
     })
-    this.setState({dummyData: languageFiltered})
+    console.log('logging in filterFunc', languageFiltered)
+    await this.setState({dummyData: languageFiltered})
   }
 
   async sortByIMDB() {
@@ -229,18 +245,17 @@ export class AllMovies extends Component {
   }
 
   render() {
-    let dummyData = this.state.dummyData
-
+    console.log('log in allmovies', this.state.dummyData)
     return (
       <div className="container">
         {!this.props.showResults ? (
           <div>
             <p />
-
             <div className="row left-align">
               {/* <button className="btn waves-effect red darken-3 white-text col s2">
             <i className="material-icons right">arrow_drop_down</i>All
           </button> */}
+
               <GenreDropDown
                 genreFilter={this.genreFilter}
                 genreTag={this.state.genreTag}
@@ -280,25 +295,7 @@ export class AllMovies extends Component {
               />
               <Sliders />
             </div>
-            <Titles dummyData={dummyData} />
-            <ul className="pagination">
-              <li className="disabled">
-                <a href="#!">
-                  <i className="material-icons">chevron_left</i>
-                </a>
-              </li>
-              <li className="active">
-                <a href="#!">1</a>
-              </li>
-              <li className="waves-effect">
-                <a href="#!">2</a>
-              </li>
-              <li className="waves-effect">
-                <a href="#!">
-                  <i className="material-icons">chevron_right</i>
-                </a>
-              </li>
-            </ul>
+            <Titles dummyData={this.state.dummyData} />
           </div>
         ) : (
           <SearchResults results={this.props.results} />
