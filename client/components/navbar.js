@@ -31,12 +31,12 @@ const Navbar = ({handleClick, isLoggedIn, showResultsFunc, browseClick}) => (
               <li>
                 <Link to="/">Home</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/login">Login</Link>
               </li>
               <li>
-                <Link to="/signup">Sign Up</Link>
-              </li>
+                <Link to="/signup">Sign U</Link>
+              </li>  */}
               <li>
                 <Link to="/allMovies" onClick={browseClick}>
                   Browse
