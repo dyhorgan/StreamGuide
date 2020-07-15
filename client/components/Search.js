@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link, Redirect} from 'react-router-dom'
-import {dummyDataOriginal} from '../DummyDataOriginal'
 
 export class Search extends React.Component {
   constructor() {
@@ -19,7 +18,8 @@ export class Search extends React.Component {
     this.setState({searchInput: event.target.value})
   }
   async submitFunc() {
-    let title = dummyDataOriginal.find(element => {
+    let {data} = await axios.get('/api/titles')
+    let title = data.find(element => {
       return (
         element.title.toUpperCase() === this.state.searchInput.toUpperCase()
       )

@@ -3,6 +3,7 @@ const unirest = require('unirest')
 module.exports = router
 
 router.use('/users', require('./users'))
+router.use('/titles', require('./titles'))
 
 // const req = unirest("GET", "https://streamzui-streamzui-v1.p.rapidapi.com/search");
 

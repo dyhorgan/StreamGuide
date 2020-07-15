@@ -3,13 +3,14 @@ import {Link} from 'react-router-dom'
 import {Titles} from './Titles'
 import Tags from './Tags'
 import {GenreDropDown} from './genreDropDown'
-import {dummyDataOriginal} from '../DummyDataOriginal'
+
 import {Languages} from './Languages'
 import {Sliders} from './Sliders'
 import {Sort} from './Sort'
 import {Services} from './Services'
 import {Content} from './Content'
 import {SearchResults} from './SearchResults'
+import axios from 'axios'
 
 // import Nouislider from 'nouislider-react'
 // import css from "./nouislider.css";
@@ -30,7 +31,7 @@ export class AllMovies extends Component {
     this.tagClose = this.tagClose.bind(this)
 
     this.state = {
-      dummyData: dummyDataOriginal,
+      dummyData: [],
       serviceTag: 'Every Service',
       genreTag: 'All',
       contentTag: 'Movies/TV',
@@ -40,7 +41,9 @@ export class AllMovies extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    let {data} = await axios.get('/api/titles')
+    this.setState({dummyData: data})
     $(document).ready(function() {
       $('.dropdown-trigger').dropdown()
     })
@@ -114,7 +117,8 @@ export class AllMovies extends Component {
   }
 
   async filterFunc() {
-    let serviceFiltered = dummyDataOriginal.filter(movie => {
+    let {data} = await axios.get('/api/titles')
+    let serviceFiltered = data.filter(movie => {
       return movie.whereWatch.includes(this.state.serviceTag)
     })
     await this.setState({dummyData: serviceFiltered})

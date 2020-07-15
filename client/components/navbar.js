@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {Search} from './Search'
-import {dummyDataOriginal} from '../DummyDataOriginal'
 
 const Navbar = ({handleClick, isLoggedIn, showResultsFunc, browseClick}) => (
   <div className="navbar-fixed">

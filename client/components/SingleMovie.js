@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-// import IMDB from './icons8-imdb-48.png'
-import {dummyDataOriginal} from '../DummyDataOriginal'
 
-let dummyData = dummyDataOriginal
+import axios from 'axios'
+
 export class SingleMovie extends Component {
   constructor() {
     super()
@@ -12,9 +11,10 @@ export class SingleMovie extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const id = this.props.match.params.id
-    const found = dummyData.find(element => Number(element.id) === Number(id))
+    let {data} = await axios.get('/api/titles')
+    const found = data.find(element => Number(element.id) === Number(id))
     this.setState({id, found})
     $(document).ready(function() {
       $('.materialboxed').materialbox()

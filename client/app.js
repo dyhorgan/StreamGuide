@@ -1,6 +1,8 @@
 import React from 'react'
-import {dummyDataOriginal} from './DummyDataOriginal'
+
 import {Navbar} from './components'
+import axios from 'axios'
+
 import Routes from './routes'
 
 class App extends React.Component {
@@ -51,7 +53,8 @@ class App extends React.Component {
   }
 
   async showResultsFunc(string) {
-    let array = await dummyDataOriginal.map(obj => {
+    let {data} = await axios.get('/api/titles')
+    let array = await data.map(obj => {
       return {
         title: obj.title,
         num: this.compFunc(string, obj.title),
