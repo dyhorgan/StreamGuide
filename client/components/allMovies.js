@@ -234,6 +234,7 @@ export class AllMovies extends Component {
     this.filterFunc()
   }
   tagClose(string) {
+    console.log('firing tagClose Func')
     if (string === 'genre') {
       this.genreFilter('All')
     }
@@ -247,6 +248,10 @@ export class AllMovies extends Component {
       this.languageSet('All Languages')
     }
   }
+
+  // tagCloseFunc(){
+  //   console.log('tag firing')
+  // }
 
   render() {
     console.log('log in allmovies', this.state.dummyData)

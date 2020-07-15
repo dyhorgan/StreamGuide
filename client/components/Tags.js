@@ -12,7 +12,12 @@ export default class extends React.Component {
         {this.props.genreTag !== 'All' ? (
           <div className="chip">
             {this.props.genreTag}
-            <i className="close material-icons">close</i>
+            <i
+              className="close material-icons"
+              onClick={() => this.props.tagClose('genre')}
+            >
+              close
+            </i>
           </div>
         ) : (
           <div />
@@ -20,7 +25,12 @@ export default class extends React.Component {
         {this.props.contentTag !== 'Movies/TV' ? (
           <div className="chip">
             {this.props.contentTag}
-            <i className="close material-icons">close</i>
+            <i
+              className="close material-icons"
+              onClick={() => this.props.tagClose('content')}
+            >
+              close
+            </i>
           </div>
         ) : (
           <div />
@@ -28,7 +38,12 @@ export default class extends React.Component {
         {this.props.serviceTag !== 'Every Service' ? (
           <div className="chip">
             {this.props.serviceTag}
-            <i className="close material-icons">close</i>
+            <i
+              className="close material-icons"
+              onClick={() => this.props.tagClose('service')}
+            >
+              close
+            </i>
           </div>
         ) : (
           <div />
@@ -36,7 +51,12 @@ export default class extends React.Component {
         {this.props.languageTag !== 'All Languages' ? (
           <div className="chip">
             {this.props.languageTag}
-            <i className="close material-icons">close</i>
+            <i
+              className="close material-icons"
+              onClick={() => this.props.tagClose('language')}
+            >
+              close
+            </i>
           </div>
         ) : (
           <div />
