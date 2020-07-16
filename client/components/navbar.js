@@ -10,7 +10,7 @@ const Navbar = ({handleClick, isLoggedIn, showResultsFunc, browseClick}) => (
     <nav>
       <div className="nav-wrapper">
         <a href="/allMovies" className="brand-logo center">
-          StreamGuide
+          StreamGuide!
         </a>
 
         {isLoggedIn ? (
