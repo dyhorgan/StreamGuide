@@ -43,7 +43,7 @@
   "license": "MIT",
   "dependencies": {
     "@welldone-software/why-did-you-render": "^4.2.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
     "compression": "^1.7.3",
     "connect-session-sequelize": "^6.1.1",
